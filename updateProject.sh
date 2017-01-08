@@ -1,2 +1,1 @@
-sudo git pull NewsPick master
-npm start
+git --git-dir=NewsPick/.git pull NewsPick master
