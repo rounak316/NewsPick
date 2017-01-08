@@ -1,1 +1,2 @@
-git --git-dir=NewsPick/.git pull NewsPick master
+git --git-dir=NewsPick/.git fetch NewsPick master
+#NewUpdate
