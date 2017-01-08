@@ -1,3 +1,3 @@
 git --git-dir=NewsPick/.git stash
-git --git-dir=NewsPick/.git fetch NewsPick master
-#BOOM BOOM
+git --git-dir=NewsPick/.git pull NewsPick master
+#BOOM BOOM2
