@@ -1,2 +1,2 @@
-sudo get pull NewsPick master
+sudo git pull NewsPick master
 npm start
