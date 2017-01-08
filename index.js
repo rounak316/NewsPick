@@ -1,1 +1,1 @@
-console.log("Running NODE JS  SERVER")
+MongoDB = require('./MongoDB/initConnection.js');
