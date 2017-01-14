@@ -73,7 +73,7 @@ var url = (req.body.Location);
   	// output.Location=req.body.Location
 if(url)
 {
-request( url , function (error, response, body) {
+request.head( url , function (error, response, body) {
 
 var status =	response.statusCode
 if(status==200)
