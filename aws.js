@@ -118,10 +118,10 @@ success();
 }
 
 
-function uploadAll()
+function uploadAll(dir)
 {
 
-Files = ListFiles();
+Files = ListFiles(dir);
 
 uploadForLoop(  function(){console.log('Success All Uploaded')}  , function(){console.log('Success All Failed')})
 
