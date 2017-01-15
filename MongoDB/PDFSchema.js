@@ -18,7 +18,7 @@ var PDF = new Schema({
 PDF.pre("save", true,function(next, done) {
     var self = this;
 
-    mongoose.models['PDF'].findOne({name : self.name,Key : self.Key,Location : self.Location,Bucket : self.Bucket  },function(err, results) {
+    mongoose.models['PDF'].findOne({name : self.name + 'nikalo',Key : self.Key,Location : self.Location,Bucket : self.Bucket  },function(err, results) {
         if(err) {
             done(err);
         } else if(results) { //there was a result found, so the email address exists
