@@ -6,7 +6,7 @@ var ShellHandler = require('./ShellHandler').exec
 
 var awsUpload = require('./aws.js').upload
 var awsDownload = require('./aws.js').download
-
+var awsuploadAll = require('./aws.js').uploadAll
 
 
 function JobToConvertPDF()
@@ -76,11 +76,11 @@ function ShellJob(param , callback)
 function postSuccessUpload(callback)
 {
 
-setTimeout(function()
-{
-console.log('Uploaded The New Files')
-callback();
-} , 3000);
+
+
+awsuploadAll();
+
+
 }
 
 
