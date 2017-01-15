@@ -1,5 +1,5 @@
 var FilePath  = "pic.jpg"
-
+var ListFiles = require('readAllFile.js').readAllFile
 var AWS = require('aws-sdk');
 var fs = require('fs')
 
@@ -57,6 +57,77 @@ else
 
  }
 
+
+function _upload(inpFilePath , outCloudPath  ,success, failure)
+{
+    var bodystream = fs.createReadStream(inpFilePath);
+
+    var params = {
+        'Bucket': 'prakhargyan',
+        'Key':outCloudPath ,
+        'Body': bodystream,
+        'ContentEncoding': 'base64', 
+        'ContentType ': 'image/jpeg'
+     };
+
+     //also tried with s3.putObject
+     s3.upload(params, function(err, data){
+
+if(err)
+{
+    failure();
+  console.log('S3 Upload Error : ', err);
+}
+else
+{
+
+     console.log('S3 Upload Success : ',data);
+     uploadForLoop(success , failure)
+
+
+}
+
+
+
+
+       
+     }) 
+
+ }
+
+
+
+var Files = [];
+function uploadForLoop(success , fail)
+{
+
+
+var File = Files.pop();
+if(File)
+{
+_upload(File , File, success , fail)
+}
+else
+{
+success();
+    //All Uploaded
+}
+
+
+
+}
+
+
+function uploadAll()
+{
+
+Files = ListFiles();
+
+uploadForLoop(  function(){console.log('Success All Uploaded')}  , function(){console.log('Success All Failed')})
+
+
+
+}
 
 function download(params , success , failure)
 {
