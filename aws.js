@@ -66,8 +66,8 @@ function _upload(inpFilePath , outCloudPath  ,success, failure)
         'Bucket': 'prakhargyan',
         'Key':outCloudPath ,
         'Body': bodystream,
-        'ContentEncoding': 'base64', 
-        'ContentType ': 'image/jpeg'
+        
+        'ContentType ': 'image/png'
      };
 
      //also tried with s3.putObject
