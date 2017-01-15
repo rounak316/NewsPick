@@ -134,7 +134,7 @@ function download(params , success , failure)
 
 
 // var params = {Bucket: 'prakhargyan', Key: 'testUpload//epf report.pdf'};
-var file = require('fs').createWriteStream('file.jpg');
+var file = require('fs').createWriteStream('in.pdf');
 
 
 
