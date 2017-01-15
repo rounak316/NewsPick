@@ -1,15 +1,18 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser');
-// var MongoDB = require('./MongoDB/initConnection.js')
-
+var MongoDB = require('./MongoDB/initConnection.js')
 var request = require('request');
-
-
-
 var albumBucketName = 'prakhargyan';
 var bucketRegion = 'us-west-2';
 var IdentityPoolId = 'us-west-2:a27fe5b3-7d29-458b-a789-21ebf22afd94';
+
+
+//Job
+var JobPDF = require('./job_pdf_converter').StartJob
+JobPDF()
+
+//
 
 
 var AWS = require('aws-sdk');
@@ -25,16 +28,7 @@ var s3 = new AWS.S3({signatureVersion: 'v4',
 });
 
 
-function checkIfUrlExists(url)
-{
 
-request( url , function (error, response, body) {
-console.log(response.statusCode)
-return  200;
-})
-
-
-}
 
 
 
@@ -55,17 +49,12 @@ app.listen(80, function () {
 
 
 
-
-
 app.post('/uploadPDF', function (req, res) {
 
 var params = {
   Bucket: req.body.Bucket, /* required */
   Key: req.body.Key, /* required */
 };
-
-
-
 
 
 var url = (req.body.Location);
@@ -75,11 +64,26 @@ if(url)
 {
 request.head( url , function (error, response, body) {
 
-var status =	response.statusCode
+if(error)
+{
+	var output = {}
+    // Handle no object on cloud here 
+     output.status="failure";
+      res.send(output)
+      return;
+}
+
+else
+{
+var status =	response.statusCode || error
 if(status==200)
 {
 var output =params
 output.status ="success" 
+
+
+MongoDB.pdf_save(req.body);
+
 res.send(output)
 
 }
@@ -89,6 +93,9 @@ else
     // Handle no object on cloud here 
      output.status="failure";
       res.send(output)
+}
+
+
 }
 
 });
@@ -107,3 +114,8 @@ else
 
   
 })
+
+
+
+
+
