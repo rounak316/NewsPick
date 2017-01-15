@@ -1,5 +1,5 @@
 var FilePath  = "pic.jpg"
-var ListFiles = require('readAllFile.js').readAllFile
+var ListFiles = require('./readAllFile.js').readAllFile
 var AWS = require('aws-sdk');
 var fs = require('fs')
 
