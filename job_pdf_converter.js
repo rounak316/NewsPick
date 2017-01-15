@@ -2,8 +2,10 @@ var MongoDB = require('./MongoDB/initConnection.js')
 var PDFSchema = require('./MongoDB/PDFSchema.js').PDF
 var mongoose = require('mongoose')
 var PDFModel = mongoose.model('PDF', PDFSchema);
+var ShellHandler = require('./ShellHandler').exec
 
-
+var awsUpload = require('./aws.js').upload
+var awsDownload = require('./aws.js').download
 
 
 
@@ -50,6 +52,18 @@ else
 }
 
 
+var TMP_PDF_FILE = "tmpPDF.pdf"
+
+
+function PreShellJob(param , success , failure)
+{
+
+
+
+awsDownload({ Bucket:param.Bucket , Key:param.Key } , function(){success();console.log('success')} , failure)
+
+}
+
 
 function ShellJob(param , callback)
 {
@@ -58,11 +72,17 @@ function ShellJob(param , callback)
 
 //callback is neccesary to be called
 
-function random()
-{
-return Math.round(Math.random(1,2) )
 
+function postSuccessUpload(callback)
+{
+
+setTimeout(function()
+{
+console.log('Uploaded The New Files')
+callback();
+} , 3000);
 }
+
 
 function success()
 {
@@ -74,9 +94,18 @@ var query = PDFModel.findOneAndUpdate({_id: param._id },  {$set:{status:2}} , {n
 query.exec(function (err, person){
 
   if (err) {
+
 console.log(err)
+
+callback()
   }
+
   else{
+
+  	// awsUpload('log.ass' , 'testUpload/' , 'log.ass' , callback)
+
+
+ postSuccessUpload(callback);
 
 // console.log(person)
 
@@ -84,7 +113,6 @@ console.log(err)
 
 
 
-callback()
 });
 
 }
@@ -119,21 +147,15 @@ callback()
 function ShellScript()
 {
 
-var num = random();
-if(num==0)
-{
-success()
-}
-else
-{
-failure();
-}
-
+ShellHandler('dir', success , failure)
 }
 
 
-setTimeout(ShellScript , 3000);
 
+
+
+
+PreShellJob(param , ShellScript ,failure );
 
 
 
@@ -150,3 +172,4 @@ setTimeout( JobToConvertPDF , 1000);
 
 
 exports.StartJob = StartJob
+

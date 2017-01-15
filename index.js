@@ -3,9 +3,8 @@ var app = express()
 var bodyParser = require('body-parser');
 var MongoDB = require('./MongoDB/initConnection.js')
 var request = require('request');
-var albumBucketName = 'prakhargyan';
-var bucketRegion = 'us-west-2';
-var IdentityPoolId = 'us-west-2:a27fe5b3-7d29-458b-a789-21ebf22afd94';
+
+
 
 
 //Job
@@ -14,18 +13,6 @@ JobPDF()
 
 //
 
-
-var AWS = require('aws-sdk');
-AWS.config.update({
-  region: bucketRegion,
-  credentials: new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: IdentityPoolId
-  })
-});
-
-var s3 = new AWS.S3({signatureVersion: 'v4',
-  params: {Bucket: albumBucketName}
-});
 
 
 
