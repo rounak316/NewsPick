@@ -73,12 +73,12 @@ function ShellJob(param , callback)
 //callback is neccesary to be called
 
 
-function postSuccessUpload(callback)
+function postSuccessUpload(success , failure)
 {
 
 
 
-awsuploadAll('ShellImages');
+awsuploadAll('ShellImages' , success , failure);
 
 
 }
@@ -105,7 +105,7 @@ callback()
   	// awsUpload('log.ass' , 'testUpload/' , 'log.ass' , callback)
 
 
- postSuccessUpload(callback);
+ postSuccessUpload(callback , failure);
 
 // console.log(person)
 
