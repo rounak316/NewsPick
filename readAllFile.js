@@ -7,7 +7,7 @@ var walkSync = function(dir, filelist) {
       filelist = walkSync(dir + '/' + file, filelist);
     }
     else {
-      filelist.push(dir + file);
+      filelist.push(dir+ '/'+ file);
     }
   });
   return filelist;
@@ -18,3 +18,4 @@ var walkSync = function(dir, filelist) {
 
 exports.readAllFile = walkSync
 
+console.log(walkSync('ShellImages'))
