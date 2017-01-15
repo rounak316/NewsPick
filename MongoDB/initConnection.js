@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://54.202.250.147/test');
+mongoose.connect('mongodb://localhost/test');
 var PDFSchema = require('./PDFSchema.js').PDF
 
 
