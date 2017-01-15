@@ -14,7 +14,7 @@ var walkSync = function(dir, filelist) {
 };
 
 
-var Files =walkSync('./ShellImages')
 
-exports.readAllFile = Files
+
+exports.readAllFile = walkSync
 
