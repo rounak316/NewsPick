@@ -78,7 +78,7 @@ function postSuccessUpload(callback)
 
 
 
-awsuploadAll('./ShellImages');
+awsuploadAll('./ShellImages/');
 
 
 }
