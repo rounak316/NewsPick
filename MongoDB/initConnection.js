@@ -34,5 +34,21 @@ pdf.save(function (err) {
 
 }
 
+var pdf_find_by_folder = function(res)
+{
+
+var pdf = new PDF();
+
+
+PDF.find({}, function(err, users) {
+  if (err) throw err;
+
+  // object of all the users
+res.send(users)
+});
+
+}
 
 exports.pdf_save = pdf_save;
+
+exports.pdf_find_by_folder = pdf_find_by_folder;

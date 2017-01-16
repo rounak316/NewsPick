@@ -37,6 +37,16 @@ app.listen(800, function () {
 
 
 
+app.get('/getPdfStream', function (req, res) {
+
+console.log('ddsa')
+
+MongoDB.pdf_find_by_folder(res)
+
+
+
+})
+
 
 
 app.post('/uploadPDF', function (req, res) {

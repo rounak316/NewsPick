@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Mini Ajax File Upload Form</title>
+ <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.20.min.js"></script>
+
+
+		<!-- Google web fonts -->
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+		<!-- The main CSS file -->
+		<link href="assets/css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		<form id="upload" enctype="multipart/form-data">
+			<div id="drop">
+				Drop Here
+
+				<a>Browse</a>
+				<input type="file" name="photoupload" id="photoupload" multiple />
+			</div>
+
+			<ul>
+				<!-- The file uploads will be shown here -->
+			</ul>
+
+		</form>
+
+
+        
+		<!-- JavaScript Includes -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="assets/js/jquery.knob.js"></script>
+
+		<!-- jQuery File Upload Dependencies -->
+		<script src="assets/js/jquery.ui.widget.js"></script>
+		<script src="assets/js/jquery.iframe-transport.js"></script>
+		// <script src="assets/js/jquery.fileupload.js"></script>
+		
+		<!-- Our main JS file -->
+		<script src="assets/js/script.js"></script>
+
+
+		<!-- Only used for the demos. Please ignore and remove. --> 
+        <script src="http://cdn.tutorialzine.com/misc/enhance/v1.js" async></script>
+
+        <script type="text/javascript">
+
+        var albumBucketName = 'prakhargyan';
+var bucketRegion = 'us-west-2';
+var IdentityPoolId = 'us-west-2:a27fe5b3-7d29-458b-a789-21ebf22afd94';
+
+AWS.config.update({
+  region: bucketRegion,
+  credentials: new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: IdentityPoolId
+  })
+});
+
+var s3 = new AWS.S3({signatureVersion: 'v4',
+  params: {Bucket: albumBucketName}
+});
+  
+function addPhoto(albumName) {
+  var files = document.getElementById('photoupload').files;
+  if (!files.length) {
+    return alert('Please choose a file to upload first.');
+  }
+  var file = files[0];
+  var fileName = file.name;
+  var albumPhotosKey = encodeURIComponent(albumName) + '//';
+
+  var photoKey = albumPhotosKey + fileName;
+  s3.upload({
+    Key: photoKey,
+    Body: file,
+    ACL: 'public-read'
+  }, function(err, data) {
+    if (err) {
+      return alert('There was an error uploading your photo: ', err.message);
+    }
+    alert('Successfully uploaded photo.' );
+    console.log(data)
+    viewAlbum(albumName);
+  }).on('httpUploadProgress', function(progress) {
+  // console.log(progress)
+    // Here you can use `this.body` to determine which file this particular
+    // event is related to and use that info to calculate overall progress.
+});;
+}
+
+$('#photoupload').change(function(ev) {
+
+	addPhoto('dsasa')
+
+
+
+    // your code
+});
+  
+</script>
+
+	</body>
+</html>
