@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 })
 
-app.listen(800, function () {
+app.listen(80, function () {
   console.log('Example app listening on port 3000!')
 })
 
@@ -44,6 +44,7 @@ app.post('/uploadPDF', function (req, res) {
 var params = {
   Bucket: req.body.Bucket, /* required */
   Key: req.body.Key, /* required */
+  Folder: req.body.Folder
 };
 
 
