@@ -34,18 +34,24 @@ pdf.save(function (err) {
 
 }
 
-var pdf_find_by_folder = function(res)
+var pdf_find_by_folder = function(res , folder)
 {
+
+
 
 var pdf = new PDF();
 
 
-PDF.find({}, function(err, users) {
-  if (err) throw err;
-
+PDF.find({Folder:folder}, function(err, users) {
+  if (err) 
+  	res.send([])
+else
   // object of all the users
 res.send(users)
 });
+
+
+
 
 }
 

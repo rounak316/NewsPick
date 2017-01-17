@@ -148,8 +148,21 @@ s3.getObject(params).createReadStream().on('error', function(err){console.log(er
 }
 
 
+function uploadMultiple(inpFilePath , outCloudPath , name ,success, failure)
+{
+
+
+
+    
+}
+
+
 exports.upload = upload;
+
+
+
 exports.uploadAll = uploadAll;
+
 exports.download = download;
 
 

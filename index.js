@@ -31,17 +31,19 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 })
 
-app.listen(800, function () {
+app.listen(80, function () {
   console.log('Example app listening on port 3000!')
 })
 
 
 
-app.get('/getPdfStream', function (req, res) {
+app.get('/getPdfStream/:folder', function (req, res) {
 
-console.log('ddsa')
+  var folder = req.params.folder
 
-MongoDB.pdf_find_by_folder(res)
+
+
+MongoDB.pdf_find_by_folder(res , folder)
 
 
 
@@ -54,6 +56,7 @@ app.post('/uploadPDF', function (req, res) {
 var params = {
   Bucket: req.body.Bucket, /* required */
   Key: req.body.Key, /* required */
+  Folder: req.body.Folder
 };
 
 
