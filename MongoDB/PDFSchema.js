@@ -1,9 +1,12 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
+
+var ArticleSchema = require('./ARTICLESchema.js')
+
 var PDF = new Schema({
 
 
-    Articles:  { type:{} ,  default: {}  } , 
+    Articles:  { type:ArticleSchema ,  default: {}  } , 
 
         Folder: { type: String, default: "00000000" } ,
 	
