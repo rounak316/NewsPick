@@ -124,6 +124,7 @@ getPDFS(  getDate() );
 
 
 }
+
 setDefaultDateToToday();
 
 
@@ -148,7 +149,7 @@ for(pdf of data)
 {
 
 var status = (pdf.status);
-console.log('appending')
+console.log('appending' + status)
 
 
 var child =  $("#model" + status).clone();
@@ -156,6 +157,9 @@ console.log(child)
 
 child[0].removeAttribute('class');
 child[0].setAttribute('class' , 'addedData');
+var URL_REDIRECT = '/?article_id=' + pdf._id;
+
+child.find('#edit')[0].setAttribute('href', URL_REDIRECT)
 
 child.appendTo('.list-group');
 
@@ -246,6 +250,6 @@ fileUpload.value = '';
 
 
 }
+datePicker()
 
  fileUploadUI()
-datePicker()

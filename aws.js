@@ -69,6 +69,7 @@ function _upload(_pdf , inpFilePath , outCloudPath  ,success, failure , Articles
     var bodystream = fs.createReadStream(inpFilePath);
 
     var params = {
+       ACL: 'public-read',
         'Bucket': 'prakhargyan',
         'Key':outCloudPath ,
         'Body': bodystream,
@@ -118,7 +119,7 @@ else
 console.log(';;;')
 console.log(Articles)
 
-var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles ,  ArticlesHD : Articles["HD"] ,  ArticlesHD:Articles["FD"]  ,  ArticlesHD:Articles["SD"]   ,  ArticlesHD:Articles["THUMB"] } }, {new: true}  );
+var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles ,  ArticlesHD : Articles["HD"] ,  ArticlesFD:Articles["FD"]  ,  ArticlesSD:Articles["SD"]   ,  ArticlesTHUMB:Articles["THUMB"] } }, {new: true}  );
 console.log(_pdf)
 
 // execute the query at a later time
