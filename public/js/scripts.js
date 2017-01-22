@@ -147,7 +147,7 @@ $('.addedData').remove()
 for(pdf of data)
 {
 
-var status = (pdf.status+1);
+var status = (pdf.status);
 console.log('appending')
 
 
