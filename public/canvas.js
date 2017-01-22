@@ -21,7 +21,7 @@ $.ajax({
 
         if(!$.isEmptyObject( data ))
         {
-          var src = data["THUMB"][0].Image;
+          var src = data["SD"][0].Image;
           console.log(src)
             $('#image')[0].src = "https://s3.ap-south-1.amazonaws.com/prakhargyan/" + src;
           callback(src);
