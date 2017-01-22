@@ -1,3 +1,32 @@
+var Data_Pic_Images = [];
+
+
+
+function CarouselInit(img_ar)
+{
+
+for(var img of img_ar)
+{
+var par = document.createElement('div')
+par.setAttribute('class' , 'carousel-item active slide')
+var _img = document.createElement('img')
+_img.setAttribute('class' , 'd-block img-fluid slide')
+_img.setAttribute('src',"https://s3.ap-south-1.amazonaws.com/prakhargyan/" + img.Image)
+par.append(_img)
+
+
+par.setAttribute('onclick' ,'alert(123)'  )
+
+
+}
+
+console.log(par)
+
+$('.carousel-inner.slide').append(par)
+}
+
+
+
 function getParameterByName(name, url) {
     if (!url) {
       url = window.location.href;
@@ -10,8 +39,11 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function initPage(callback)
+function initPage(callback , page)
 {
+
+page  = page || 0;
+
 var article_id = getParameterByName('article_id')
 
 $.ajax({
@@ -21,7 +53,13 @@ $.ajax({
 
         if(!$.isEmptyObject( data ))
         {
-          var src = data["SD"][0].Image;
+
+          Data_Pic_Images = data;
+
+          var src = Data_Pic_Images["SD"][page].Image;
+
+          CarouselInit(data["THUMB"])
+
           console.log(src)
             $('#image')[0].src = "https://s3.ap-south-1.amazonaws.com/prakhargyan/" + src;
           callback(src);
