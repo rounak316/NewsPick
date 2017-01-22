@@ -23,8 +23,18 @@ echoerr "Conversion Failed" >&2
 
 }
 
+BurpOutput(){
 
-ImageOutput="ShellImages/"
+printf $2
+for entry in "$1"*
+do
+  printf "||$entry"
+done
+
+
+}
+
+ImageOutput="ShellImages/"$2"/"
 InputDirectory=$1
 
 if [ -z "$InputDirectory" ];then
@@ -37,25 +47,28 @@ echoerr "Unable To Create Directory.. Check for required permissions"
 fi
 
 if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r150 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
-echo "SD Converted"
+BurpOutput "$ImageOutput"sd/ "SD"
+printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
 if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r600 -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
-echo "FD Converted"
+BurpOutput "$ImageOutput"fd/ "FD"
+printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
 if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r300 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
-echo "HD Converted"
+BurpOutput "$ImageOutput"hd/ "HD"
+printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
 if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r15 -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
-echo "THUMS Converted"
+BurpOutput "$ImageOutput"thumb/ "THUMB"
 else
 ClearShit $ImageOutput
 fi

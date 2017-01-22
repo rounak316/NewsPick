@@ -1,6 +1,70 @@
-function startCanvasEditor()
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function initPage(callback)
 {
-    $('#image').cropper({
+var article_id = getParameterByName('article_id')
+
+$.ajax({
+    url: '/getArticles/'+article_id,
+    type: 'GET',
+    success: function(data){ 
+
+        if(!$.isEmptyObject( data ))
+        {
+          var src = data["THUMB"][0];
+          console.log(src)
+            $('#image')[0].src = "https://s3.ap-south-1.amazonaws.com/prakhargyan/" + src;
+          callback(src);
+
+        }
+        else
+        {
+          alert('Invalid Data'); 
+        }
+
+        
+    },
+    error: function(data) {
+        alert('Invalid Data'); //or whatever
+    }
+});
+
+}
+
+function postSplitterData(splitterData)
+{
+
+
+console.log(splitterData)
+$.ajax({
+  type: "POST",
+  url: '/getPdfStream/3213/312321',
+  data: {splitter_data:splitterData},
+  success: function(data){
+console.log(data)
+
+  }
+});
+
+
+}
+
+function startCanvasEditor(img_src)
+{
+
+
+
+      $('#image').cropper({
  // preview: '.preview',
 
 viewMode:1,
@@ -9,6 +73,13 @@ viewMode:1,
 
   }
 });
+
+
+
+
+
+
+
 
 var KeyState = true;
 
@@ -218,7 +289,7 @@ for(i of SpaceRect)
 {
 
 
-  clipboard+='' + Math.round(CropBoxData.x) + "," + Math.round(CropBoxData.y)+":"+Math.round(CropBoxData.x+CropBoxData.width)+','+Math.round(CropBoxData.y+CropBoxData.height)+' '
+  clipboard+='' + Math.round(CropBoxData.x) + "," + Math.round(CropBoxData.y)+":"+Math.round(CropBoxData.x+CropBoxData.width)+','+Math.round(CropBoxData.y+CropBoxData.height)+'|'
 
 
 if(i.include == true)
@@ -241,7 +312,7 @@ MissedExcluded.push(i)
 }
 
 clipboard+='"'
-console.log(clipboard);
+//console.log(clipboard);
 
 ctx.fill()
 ctx.beginPath();
@@ -437,6 +508,8 @@ function saveArtcleCropped()
 
 
 
+postSplitterData(clipboard)
+
 }
 
 
@@ -591,7 +664,9 @@ function Redo()
 
 
 
-var initCanvas = startCanvasEditor();
+
+
+initPage( startCanvasEditor)
 
 
 

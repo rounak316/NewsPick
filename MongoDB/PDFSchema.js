@@ -2,6 +2,9 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 var PDF = new Schema({
 
+
+    Articles:  { type:{} ,  default: {}  } , 
+
         Folder: { type: String, default: "00000000" } ,
 	
 	name: { type: String, default: 'guitarist' } ,

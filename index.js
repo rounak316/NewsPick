@@ -1,7 +1,10 @@
+var MongoDB = require('./MongoDB/initConnection.js')
+
 var express = require('express')
 var app = express()
+
 var bodyParser = require('body-parser');
-var MongoDB = require('./MongoDB/initConnection.js')
+
 var request = require('request');
 
 
@@ -9,11 +12,12 @@ var request = require('request');
 
 //Job
 var JobPDF = require('./job_pdf_converter').StartJob
-JobPDF()
+
+var ArticleConverter = require('./ArticleConverter').StartJob
+
+
 
 //
-
-
 
 
 
@@ -22,6 +26,10 @@ JobPDF()
 // app.set('view engine', 'jade');
 
 app.use(express.static(__dirname + '/public'));
+
+
+
+
 
 
 
@@ -49,6 +57,35 @@ MongoDB.pdf_find_by_folder(res , folder)
 
 })
 
+
+
+app.get('/getArticles/:id', function (req, res) {
+
+  var _id = req.params.id
+
+
+
+MongoDB.pdf_find_articles(res , _id)
+
+
+
+})
+
+
+
+app.post('/getPdfStream/:folder/:id', function (req, res) {
+
+
+var splitter_data = req.body.splitter_data;
+
+var PDF_NAME = req.body.PDF_NAME
+
+ArticleConverter( 'sh ./test.sh '  + splitter_data  , function(){console.log('yes')} , function(){console.log('no')})
+
+res.send('sh ImageCutter.sh '  + splitter_data  )
+
+
+})
 
 
 app.post('/uploadPDF', function (req, res) {
@@ -118,7 +155,10 @@ else
   
 })
 
-
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 
 
 

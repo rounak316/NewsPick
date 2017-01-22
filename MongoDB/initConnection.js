@@ -1,5 +1,16 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://54.202.250.147/test');
+var ObjectId = mongoose.Types.ObjectId; 
+mongoose.connect('mongodb://54.202.250.147/test', {
+  server: {
+    socketOptions: {
+      socketTimeoutMS: 0,
+      connectTimeoutMS: 0
+    }
+  }
+});
+
+
+
 var PDFSchema = require('./PDFSchema.js').PDF
 
 
@@ -55,6 +66,40 @@ res.send(users)
 
 }
 
+
+var pdf_find_articles = function(res , _id)
+{
+
+
+
+var pdf = new PDF();
+if(ObjectId.isValid(_id))
+_id = new ObjectId(_id);
+else
+
+{
+  throw new Error();
+
+}
+
+
+PDF.findOne({_id: _id}  , '-_id Articles', function(err, articles) {
+  if (err || !articles) 
+    res.send({})
+else
+  // object of all the users
+res.send(articles.Articles)
+});
+
+
+
+
+}
+
+
 exports.pdf_save = pdf_save;
 
 exports.pdf_find_by_folder = pdf_find_by_folder;
+
+
+exports.pdf_find_articles = pdf_find_articles

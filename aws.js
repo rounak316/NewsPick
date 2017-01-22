@@ -2,7 +2,9 @@ var FilePath  = "pic.jpg"
 var ListFiles = require('./readAllFile.js').readAllFile
 var AWS = require('aws-sdk');
 var fs = require('fs')
-
+var mongoose = require('mongoose')
+var PDFSchema = require('./MongoDB/PDFSchema.js').PDF
+var PDFModel = mongoose.model('PDF', PDFSchema);
 
      //aws credentials
 var albumBucketName = 'prakhargyan';
@@ -20,11 +22,15 @@ AWS.config.update({
 
 
 
+
+
+
 function upload(inpFilePath , outCloudPath , name ,success, failure)
 {
     var bodystream = fs.createReadStream(inpFilePath);
 
     var params = {
+      ACL: 'public-read',
         'Bucket': 'prakhargyan',
         'Key':outCloudPath + name,
         'Body': bodystream,
@@ -58,7 +64,7 @@ else
  }
 
 
-function _upload(inpFilePath , outCloudPath  ,success, failure)
+function _upload(_pdf , inpFilePath , outCloudPath  ,success, failure , Articles)
 {
     var bodystream = fs.createReadStream(inpFilePath);
 
@@ -82,7 +88,7 @@ else
 {
 
      console.log('S3 Upload Success : ',data);
-     uploadForLoop(success , failure)
+     uploadForLoop(_pdf , success , failure , Articles)
 
 
 }
@@ -98,18 +104,45 @@ else
 
 
 var Files = [];
-function uploadForLoop(success , fail)
+function uploadForLoop(_pdf , success , fail , Articles)
 {
 
 
 var File = Files.pop();
 if(File)
 {
-_upload(File , File, success , fail)
+_upload(_pdf , File , File, success , fail ,Articles )
 }
 else
 {
-success();
+console.log(';;;')
+console.log(Articles)
+
+var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles}}, {new: true}  );
+console.log(_pdf)
+
+// execute the query at a later time
+query.exec(function (err, _pdf) {
+  if (err) {
+console.log('Error Encountered: '  + err)
+fail();
+return;
+  }
+else
+{
+
+  console.log(_pdf)
+ 
+  success();
+
+ 
+}
+
+ // Space Ghost is a talk show host.
+})
+//Update MoongoPDF of Articles Ulaoded to s3
+
+
     //All Uploaded
 }
 
@@ -118,12 +151,24 @@ success();
 }
 
 
-function uploadAll(dir , success , failure)
+function uploadAll(_pdf , success , failure, Articles)
 {
 
-Files = ListFiles(dir);
+    var dir = 'ShellImages/' + _pdf.Folder+'/'+_pdf._id ;
 
-uploadForLoop(   success , failure );
+Files = ListFiles(dir);
+console.log(dir)
+
+console.log(_pdf)
+uploadForLoop( _pdf ,   success , failure,Articles );
+
+
+
+}
+
+
+function fromCache(params, success , failure)
+{
 
 
 

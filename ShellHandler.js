@@ -1,7 +1,9 @@
 const exec = require('child_process').exec;
 function cmd(command , success , failure)
 {
-const child = exec('sh PdfToImage.sh in.pdf', function(error, stdout, stderr) {
+
+
+const child = exec(command, function(error, stdout, stderr) {
   if (stderr) {
 
   	//Failed
@@ -13,7 +15,7 @@ const child = exec('sh PdfToImage.sh in.pdf', function(error, stdout, stderr) {
 
   {
   	//Success
-  	success()
+  	success(stdout)
 
   }
 });
