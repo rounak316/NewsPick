@@ -118,7 +118,7 @@ else
 console.log(';;;')
 console.log(Articles)
 
-var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles}}, {new: true}  );
+var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles ,  ArticlesHD : Articles["HD"] ,  ArticlesHD:Articles["FD"]  ,  ArticlesHD:Articles["SD"]   ,  ArticlesHD:Articles["THUMB"] } }, {new: true}  );
 console.log(_pdf)
 
 // execute the query at a later time

@@ -5,8 +5,13 @@ var ArticleSchema = require('./ARTICLESchema.js')
 
 var PDF = new Schema({
 
+    ArticlesFD:  { type:ArticleSchema ,  default: {}  } , 
+        ArticlesHD:  { type:ArticleSchema ,  default: {}  } , 
+            ArticlesSD:  { type:ArticleSchema ,  default: {}  } , 
+                ArticlesTHUMB:  { type:ArticleSchema ,  default: {}  } , 
 
-    Articles:  { type:ArticleSchema ,  default: {}  } , 
+
+    Articles:  { type:{} ,  default: {}  } , 
 
         Folder: { type: String, default: "00000000" } ,
 	
