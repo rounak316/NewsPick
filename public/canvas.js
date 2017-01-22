@@ -1,5 +1,5 @@
 var Data_Pic_Images = [];
-
+var CURRENT_PAGE = 0;
 
 
 function CarouselInit(img_ar)
@@ -43,6 +43,8 @@ function initPage(callback , page)
 {
 
 page  = page || 0;
+
+CURRENT_PAGE = page;
 
 var article_id = getParameterByName('article_id')
 

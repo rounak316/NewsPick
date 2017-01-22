@@ -1,5 +1,5 @@
 var MongoDB = require('./MongoDB/initConnection.js')
-
+var ShellHandler = require('./ShellHandler').exec
 var express = require('express')
 var app = express()
 
@@ -78,9 +78,24 @@ app.post('/getPdfStream/:folder/:id', function (req, res) {
 
 var splitter_data = req.body.splitter_data;
 
-var PDF_NAME = req.body.PDF_NAME
+var url = req.body.url
 
-ArticleConverter( 'sh ./test.sh '  + splitter_data  , function(){console.log('yes')} , function(){console.log('no')})
+console.log(req.body.url + " " + req.body.id + " " + req.body.folder)
+
+function failure()
+{
+console.log('no')
+}
+
+
+function success()
+{
+
+ArticleConverter( 'sh ./test.sh '  + splitter_data  , function() {console.log('yes');} , failure )
+}
+
+
+ShellHandler('sh ./downloadFile.sh ' + url ,success , failure )
 
 res.send('sh ImageCutter.sh '  + splitter_data  )
 
