@@ -21,7 +21,7 @@ $.ajax({
 
         if(!$.isEmptyObject( data ))
         {
-          var src = data["SD"][0].Image;
+          var src = data["THUMB"][0].Image;
           console.log(src)
             $('#image')[0].src = "https://s3.ap-south-1.amazonaws.com/prakhargyan/" + src;
           callback(src);
@@ -58,6 +58,10 @@ console.log(data)
 
 
 }
+
+
+var CLIPBOARD = []
+
 
 function startCanvasEditor(img_src)
 {
@@ -260,6 +264,9 @@ $('#image').cropper('replace' , image);
 
 }
 
+
+
+
 function blurRect(image , include)
 {
 
@@ -284,12 +291,11 @@ ctx.beginPath();
 
 var MissedExcluded = []
 
-clipboard = '"'
+
 for(i of SpaceRect)
 {
 
 
-  clipboard+='' + Math.round(CropBoxData.x) + "," + Math.round(CropBoxData.y)+":"+Math.round(CropBoxData.x+CropBoxData.width)+','+Math.round(CropBoxData.y+CropBoxData.height)+'|'
 
 
 if(i.include == true)
@@ -311,7 +317,7 @@ MissedExcluded.push(i)
 
 }
 
-clipboard+='"'
+
 //console.log(clipboard);
 
 ctx.fill()
@@ -378,10 +384,14 @@ var Left = 0;
 var Right = 0;
 var Top = 0;
 var Bottom = 0;
-
+var clipboard = []
 for(i of SpaceRect)
 {
+
   CropBoxData = i.coordinates;
+
+      clipboard.push( Math.round(CropBoxData.x) + "," + Math.round(CropBoxData.y)+":"+Math.round(CropBoxData.x+CropBoxData.width)+','+Math.round(CropBoxData.y+CropBoxData.height) );
+
 
 if(_default)
 {
@@ -420,6 +430,9 @@ copyToNewCanvas(ctx, _ctx , CropBoxData)
 
 }
 
+
+
+CLIPBOARD.push(clipboard)
 
 var _CropBoxData = {};
 _CropBoxData.x = Left;
@@ -525,8 +538,9 @@ function EnterKey(image) {
 
       SaveState();
       clearRect(image);
+console.log(CLIPBOARD);
 
-           saveArtcleCropped();
+           // saveArtcleCropped();
       
 
 

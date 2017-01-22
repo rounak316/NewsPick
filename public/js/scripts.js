@@ -104,6 +104,9 @@ var yyyy = today.getFullYear();
 if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = yyyy+'-'+mm+'-'+dd;
 
 $('#date').attr('value', today);
+
+$('#date')[0].onchange()
+
 console.log(today)
 getPDFS(  today);
 
@@ -117,7 +120,7 @@ function datePicker()
 	var DatePicker = $('#date')[0];
 DatePicker.onchange = function()
 {
-
+console.log('new date set ' + DatePicker.value)
 CurrentDate = DatePicker.value;
 
 getPDFS(  getDate() );
@@ -222,7 +225,7 @@ var date_tmp =getDate();
 if(!date_tmp)
     {
 fileUpload.value = '';
-        console.log('Select A date')
+        console.log('Select A date' + date_tmp)
     return;
 }
 var Files = fileUpload.files;
