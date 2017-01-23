@@ -19,7 +19,7 @@ var PDFSchema = require('./PDFSchema.js').PDF
 
 
 
-var PDF = mongoose.model('_PDF', PDFSchema);
+var PDF = mongoose.model('PDFS', PDFSchema);
 
 
 
