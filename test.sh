@@ -13,7 +13,7 @@ PREVIOUS_TMP=""
 
 ImageCutter()
 {
-myArray=( "$1" )
+myArray=$1
 echo BOOM"$1"
 # output=convert -size output xc:white -stroke none  -strokewidth 0 -fill "rgba( 0, 0, 0 , 1 )" $rectangleSubCommand  draw_rect.png
     
@@ -69,7 +69,7 @@ initArticleDirectory()
 	mkdir "$DirectoryName"
 }
 
-INPUT=( "$@" )
+INPUT="$@"
 
 
 
