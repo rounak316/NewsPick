@@ -13,7 +13,7 @@ var pdf_id =  Data_Pic_Images._id;
 var article_id =  Data_Pic_Images.Articles["SD"][page]._id;
 var page_no = page;
 var url = "URL";
-var quality = "SD";
+var quality = "FD";
 var Location = Data_Pic_Images.Articles["SD"][page].Image;
 
 
@@ -443,6 +443,8 @@ ctxNew.putImageData(imgData , CropBoxData.x , CropBoxData.y);
 }
 
 
+
+
 function clearRect(image)
 {
 var elem_img =  _backupImage;
@@ -474,7 +476,22 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-      clipboard.push( Math.round(CropBoxData.x) + "," + Math.round(CropBoxData.y)+":"+Math.round(CropBoxData.x+CropBoxData.width)+','+Math.round(CropBoxData.y+CropBoxData.height) );
+  var scale_matrix = 3;
+
+  var __x1 = Math.round(CropBoxData.x) ;
+
+  var __y1 = Math.round(CropBoxData.y) 
+
+  var __x2 = Math.round(CropBoxData.x+CropBoxData.width);
+
+  var __y2 = Math.round(CropBoxData.y+CropBoxData.height) ;
+
+
+var _x1 =(scale_matrix*__x1) + (scale_matrix*__y1)
+var _x1 =(scale_matrix*__x1) + (scale_matrix*__y1)
+
+
+      clipboard.push( (__x1*scale_matrix) + "," + (__y1*scale_matrix))+":"+(__x2*scale_matrix)+','+(__y2*scale_matrix) );
 
 
 if(_default)
