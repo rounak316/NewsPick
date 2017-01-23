@@ -97,6 +97,18 @@ var ARTICLES_SHELL_OUTPUT_1 = shell_output.split("\n")
 
 var Articles = {}
 
+
+
+var OBJECT_IDS = []
+
+
+for(var pop in ARTICLES_SHELL_OUTPUT_1[0].split('||') )
+{
+OBJECT_IDS[pop] = mongoose.Types.ObjectId();
+}
+
+
+
 for(var _tmp of ARTICLES_SHELL_OUTPUT_1)
 {
   var ARTICLES_SHELL_OUTPUT_2 = _tmp.split("||");
@@ -105,14 +117,14 @@ for(var _tmp of ARTICLES_SHELL_OUTPUT_1)
 
 
    var ARTICLES_QUALITY = ARTICLES_SHELL_OUTPUT_2.splice(1,ARTICLES_SHELL_OUTPUT_2.length ) ;
-var __id = mongoose.Types.ObjectId();
-console.log(__id)
-console.log('*****************************')
+
+
+
 
 for(var tmp_i in ARTICLES_QUALITY)
 {
 
-ARTICLES_QUALITY[tmp_i] = new ARTICLEModel({_id: __id ,  Page:(tmp_i+1) ,Quality: QUALITY , Image:ARTICLES_QUALITY[tmp_i] });
+ARTICLES_QUALITY[tmp_i] = new ARTICLEModel({_id: OBJECT_IDS[tmp_i] ,  Page:(tmp_i+1) ,Quality: QUALITY , Image:ARTICLES_QUALITY[tmp_i] });
 
 }
 
