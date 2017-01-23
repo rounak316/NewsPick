@@ -10,10 +10,11 @@ function initPublishButton()
 
 var splitter_data = CLIPBOARD
 var pdf_id =  Data_Pic_Images._id;
-var article_id =  Data_Pic_Images.Articles["SD"][page]._id;
+
 var page_no = page;
 var url = "URL";
 var quality = "FD";
+var article_id =  Data_Pic_Images.Articles[quality][page]._id;
 var Location = Data_Pic_Images.Articles[quality][page].Image;
 
 
