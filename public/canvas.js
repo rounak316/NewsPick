@@ -2,6 +2,48 @@ var Data_Pic_Images = [];
 var CURRENT_PAGE = 0;
 
 
+
+
+function initPublishButton()
+{
+
+
+var splitter_data = CLIPBOARD
+var pdf_id =  Data_Pic_Images._id;
+var article_id =  Data_Pic_Images.Articles["SD"][page]._id;
+var page_no = page;
+var url = "URL";
+var quality = "SD";
+var Location = Data_Pic_Images.Articles["SD"][page].Image;
+
+
+var body = {
+
+
+article_id :article_id ,
+page_no: page_no,
+url:url,
+splitter_data:splitter_data,
+quality:quality,
+pdf_id:pdf_id,
+Location:Location
+
+
+}
+
+
+
+postSplitterData(body)
+
+
+
+
+
+
+
+
+}
+
 function CarouselInit(img_ar)
 {
 
@@ -58,7 +100,7 @@ $.ajax({
 
           Data_Pic_Images = data;
 
-          var src = Data_Pic_Images["SD"][page].Image;
+          var src = Data_Pic_Images.Articles["SD"][page].Image;
 
           CarouselInit(data["THUMB"])
 
@@ -81,15 +123,17 @@ $.ajax({
 
 }
 
-function postSplitterData(splitterData)
+function postSplitterData(data)
 {
 
 
-console.log(splitterData)
+console.log(splitterData);
+
+
 $.ajax({
   type: "POST",
-  url: '/getPdfStream/3213/312321',
-  data: {splitter_data:splitterData},
+  url: '/splitArticles',
+  data: data , 
   success: function(data){
 console.log(data)
 
@@ -561,7 +605,7 @@ function saveArtcleCropped()
 
 
 
-postSplitterData(clipboard)
+// postSplitterData(clipboard)
 
 }
 
@@ -724,3 +768,4 @@ initPage( startCanvasEditor)
 
 
 
+$('#splitIt')[0].setAttribute('onclick' , 'initPublishButton()');

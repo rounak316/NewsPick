@@ -13,6 +13,8 @@ var request = require('request');
 //Job
 var JobPDF = require('./job_pdf_converter').StartJob
 
+var Article_cutter_job = require('./article_cutter_job').StartJob
+
 var ArticleConverter = require('./ArticleConverter').StartJob
 
 

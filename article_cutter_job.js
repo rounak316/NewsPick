@@ -108,7 +108,15 @@ awsuploadAll(_article , success , failure   , 'Articles');
 }
 
 
-StartJob( function(){console.log('success')} , function(){console.log('failure')} );
+function InitJobArticleCutter()
+{
 
+setTimeout(  function(){ StartJob( function(){console.log('success'); InitJobArticleCutter()} , function(){console.log('failure') ; InitJobArticleCutter()} ) } , 1000 );
+
+}
 
 exports.StartJob = StartJob
+
+
+
+InitJobArticleCutter()
