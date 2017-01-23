@@ -81,7 +81,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function initPage(callback , page)
+function initPage(callback )
 {
 
 page  = page || 0;
@@ -102,9 +102,9 @@ $.ajax({
 
           var src = Data_Pic_Images.Articles["SD"][page].Image;
 
-          CarouselInit(data["THUMB"])
+          CarouselInit(Data_Pic_Images.Articles["THUMB"])
 
-          console.log(src)
+          console.log(src + " __" + page)
             $('#image')[0].src = "https://s3.ap-south-1.amazonaws.com/prakhargyan/" + src;
           callback(src);
 
@@ -127,7 +127,7 @@ function postSplitterData(data)
 {
 
 
-console.log(splitterData);
+console.log(data);
 
 
 $.ajax({
@@ -763,7 +763,7 @@ function Redo()
 
 
 
-
+var page = 0;
 initPage( startCanvasEditor)
 
 
