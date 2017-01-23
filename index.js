@@ -73,12 +73,14 @@ MongoDB.pdf_find_articles(res , _id)
 
 
 
-app.post('/getPdfStream/:folder/:id', function (req, res) {
+app.post('/getPdfStream/', function (req, res) {
 
 
 var splitter_data = req.body.splitter_data;
-
+var pdf_id = req.body.pdf_id;
+var page_no = req.body.page_no;
 var url = req.body.url
+var quality = req.body.quality
 
 console.log(req.body.url + " " + req.body.id + " " + req.body.folder)
 
@@ -95,9 +97,13 @@ ArticleConverter( 'sh ./test.sh '  + splitter_data  , function() {console.log('y
 }
 
 
-ShellHandler('sh ./downloadFile.sh ' + req.body.url ,success , failure )
+// ShellHandler('sh ./downloadFile.sh ' + req.body.url ,success , failure )
 
-res.send( 'sh ./downloadFile.sh ' + req.body.url   )
+
+
+MongoDB.articles(res,req.body)
+
+// res.send( req.body   )
 
 
 })

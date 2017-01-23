@@ -97,9 +97,35 @@ res.send(articles.Articles)
 }
 
 
+var articles = function(res , param)
+{
+
+
+
+var pdf = new PDF();
+
+
+PDF.find(param, function(err, pdf) {
+  if (err) 
+    res.send('error')
+else
+  // object of all the users
+res.send(pdf)
+});
+
+
+
+
+}
+
+
+
 exports.pdf_save = pdf_save;
 
 exports.pdf_find_by_folder = pdf_find_by_folder;
 
 
 exports.pdf_find_articles = pdf_find_articles
+
+
+exports.articles = articles
