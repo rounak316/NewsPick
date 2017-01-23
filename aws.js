@@ -6,6 +6,10 @@ var mongoose = require('mongoose')
 var PDFSchema = require('./MongoDB/PDFSchema.js').PDF
 var PDFModel = mongoose.model('PDF', PDFSchema);
 
+
+var SubArticleSchema = require('./MongoDB/Subarticles.js').SubArticleSchema
+var SubArticleModel = mongoose.model('ARTICLES', SubArticleSchema);
+
      //aws credentials
 var albumBucketName = 'prakhargyan';
 var bucketRegion = 'us-west-2';
@@ -157,16 +161,30 @@ else
 }
 
 
-function uploadAll(_pdf , success , failure, Articles)
+function uploadAll(_pdf , success , failure, Articles , _dir)
 {
 
-    var dir = 'ShellImages/' + _pdf.Folder+'/'+_pdf._id ;
+    var dir = _dir + _pdf.Folder+'/'+_pdf._id ;
 var Files = [];
 Files = ListFiles(dir);
 console.log(dir)
 
 console.log(_pdf)
 uploadForLoop( _pdf ,   success , failure,Articles , Files );
+
+
+
+}
+
+
+function uploadAllArticles(_article , success , failure , _dir)
+{
+
+    var dir = _dir + _article.Folder+'/'+_article.pdf_id + "/" + _article.article_id + "/" + _article.quality ;
+var Files = [];
+Files = ListFiles(dir);
+
+uploadForLoopForArticle( _article ,   success , failure , Files );
 
 
 
@@ -208,6 +226,99 @@ function uploadMultiple(inpFilePath , outCloudPath , name ,success, failure)
 }
 
 
+
+
+function _uploadArticle(_article , inpFilePath , outCloudPath  ,success, failure  , Files)
+{
+    var bodystream = fs.createReadStream(inpFilePath);
+
+    var params = {
+       ACL: 'public-read',
+        'Bucket': 'prakhargyan',
+        'Key':outCloudPath ,
+        'Body': bodystream,
+        
+        'ContentType ': 'image/png'
+     };
+
+     //also tried with s3.putObject
+     s3.upload(params, function(err, data){
+
+if(err)
+{
+    failure();
+  console.log('S3 Upload Error : ', err);
+}
+else
+{
+
+     console.log('S3 Upload Success : ',data);
+     uploadForLoopForArticle(_article , success , failure  , Files)
+
+
+}
+
+
+
+
+       
+     }) 
+
+ }
+
+
+
+ function uploadForLoopForArticle(_article ,  success , fail  , Files)
+{
+
+
+var File = Files.pop();
+if(File)
+{
+
+_uploadArticle( _article , File , File, success , fail   , Files)
+
+}
+else
+{
+
+
+
+var query = SubArticleModel.findOneAndUpdate({_id:_article._id}, {$set:{status:1 } }, {new: true}  );
+
+
+// execute the query at a later time
+query.exec(function (err, _article) {
+  if (err) {
+console.log('Error Encountered: '  + err)
+fail();
+return;
+  }
+else
+{
+
+  console.log(_article)
+ 
+  success();
+
+ 
+}
+
+ // Space Ghost is a talk show host.
+})
+//Update MoongoPDF of Articles Ulaoded to s3
+
+
+    //All Uploaded
+}
+
+
+
+}
+
+
+
+
 exports.upload = upload;
 
 
@@ -216,4 +327,6 @@ exports.uploadAll = uploadAll;
 
 exports.download = download;
 
+
+exports.uploadAllArticles = uploadAllArticles;
 

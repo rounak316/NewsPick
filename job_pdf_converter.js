@@ -36,7 +36,7 @@ else
   }
   else
   {
-  	console.log('Nothing Found')
+  	// console.log('Nothing Found')
   	StartJob();
 
 
@@ -82,7 +82,7 @@ function postSuccessUpload(_pdf , success , failure , Articles)
 
 
 
-awsuploadAll(_pdf , success , failure  , Articles);
+awsuploadAll(_pdf , success , failure  , Articles , 'ShellImages/');
 
 
 }

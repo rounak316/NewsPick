@@ -100,16 +100,18 @@ res.send(articles.Articles)
 function findArticleForSplit(res , param , article) 
 {
 
+ console.log('iintt' + param + article)
+
 try
 {
 
   var splitter_data = param.splitter_data;
-var pdf_id = param._id;
+var pdf_id = article._id;
 var article_id = param.article_id;
-var page_no = article.page_no;
+
 var url = param.url
 var quality = param.quality
-var Location = article.Location
+var Location = param.Location
 
 
 
@@ -122,10 +124,13 @@ res.send(Articles)
 for(var Article of Articles)
 {
 
-if(Article._id == pdf_id)
+
+if(Article._id == article_id)
 {
 
-var save_sub_article = { pdf_id: pdf_id, article_id: article_id , page_no:page_no , Location: Location, splitter_data:splitter_data , quality: quality }; 
+var page_no = Article.page_no;
+
+var save_sub_article = { pdf_id: new ObjectId(pdf_id), article_id: new ObjectId( article_id) , page_no:page_no , Location: Location , splitter_data:splitter_data , quality: quality }; 
 
 
 
@@ -136,7 +141,7 @@ var sub_article = new SubArticle(save_sub_article);
 
 sub_article.save(function (err) {
   if (err) {
-    console.log(err);
+    console.log('error' , err);
   } else {
     console.log('Saved SubArticle');
   }
@@ -152,7 +157,7 @@ return
 
 }
 
-res.send('{}' + article)
+res.send('{}' )
 
 }
 catch(ex)
@@ -168,22 +173,23 @@ throw new Error();
 var splitArticles = function(res , param)
 {
 
-var _id = param._id;
+var pdf_id = param.pdf_id;
 
 
 
 var pdf = new PDF();
 
 
-PDF.findOne(  {_id:_id }, function(err, article) {
+PDF.findOne(  {_id:pdf_id }, function(err, article) {
   if (err || !article)  
    res.send('{}')
 else{
   // object of all the users
 
-console.log(article)
+
 try
 {
+
 findArticleForSplit(res , param , article)
 }
 catch(ex)

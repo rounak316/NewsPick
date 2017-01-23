@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
-var SubArticleSchema = require('./SubArticleSchema.js')
+
 
 var ArticleSchema = new Schema({
 
