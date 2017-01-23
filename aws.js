@@ -119,7 +119,12 @@ else
 console.log(';;;')
 console.log(Articles)
 
-var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles ,  ArticlesHD : Articles["HD"] ,  ArticlesFD:Articles["FD"]  ,  ArticlesSD:Articles["SD"]   ,  ArticlesTHUMB:Articles["THUMB"] } }, {new: true}  );
+
+// var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles ,  ArticlesHD : Articles["HD"] ,  ArticlesFD:Articles["FD"]  ,  ArticlesSD:Articles["SD"]   ,  ArticlesTHUMB:Articles["THUMB"] } }, {new: true}  );
+
+var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles } }, {new: true}  );
+
+
 console.log(_pdf)
 
 // execute the query at a later time
