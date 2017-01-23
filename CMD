@@ -1,1 +1,1 @@
-convert -size 1003x1515 xc:white -stroke none  -strokewidth 0 -fill "rgba( 0, 0, 0 , 1 )"  -draw "rectangle 857,25 972,208" -fill "rgba( 255, 255, 255 , 1 )"  -draw "rectangle 33,202 497,347" -draw "rectangle 492,213 898,318" -draw "rectangle 775,211 954,316" -draw "rectangle 857,211 976,318" "draw_rect.png"
+convert -quiet -size 1056x1594 xc:white -stroke none  -strokewidth 0 -fill "rgba( 0, 0, 0 , 1 )"  -draw "rectangle 100,100 0,0" -fill "rgba( 255, 255, 255 , 1 )"  "draw_rect.png"

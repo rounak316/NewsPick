@@ -19,7 +19,10 @@ splitter_data:{type:String} ,
 
 quality:{type:String} ,
 
-status: {type:Number , default:0}
+status: {type:Number , default:0} , 
+
+
+SubArticlesImages : {type:[]}
 
 
 })

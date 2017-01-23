@@ -180,9 +180,11 @@ uploadForLoop( _pdf ,   success , failure,Articles , Files );
 function uploadAllArticles(_article , success , failure , _dir)
 {
 
-    var dir = _dir + _article.Folder+'/'+_article.pdf_id + "/" + _article.article_id + "/" + _article.quality ;
+    var dir = dir='Articles/';
 var Files = [];
 Files = ListFiles(dir);
+
+
 
 uploadForLoopForArticle( _article ,   success , failure , Files );
 
@@ -228,7 +230,7 @@ function uploadMultiple(inpFilePath , outCloudPath , name ,success, failure)
 
 
 
-function _uploadArticle(_article , inpFilePath , outCloudPath  ,success, failure  , Files)
+function _uploadArticle(_article , inpFilePath , outCloudPath  ,success, failure  , Files , Responses)
 {
     var bodystream = fs.createReadStream(inpFilePath);
 
@@ -253,7 +255,9 @@ else
 {
 
      console.log('S3 Upload Success : ',data);
-     uploadForLoopForArticle(_article , success , failure  , Files)
+
+     Responses.push(data)
+     uploadForLoopForArticle(_article , success , failure  , Files, Responses)
 
 
 }
@@ -268,15 +272,20 @@ else
 
 
 
- function uploadForLoopForArticle(_article ,  success , fail  , Files)
+ function uploadForLoopForArticle(_article ,  success , fail  , Files , Responses)
 {
+Responses = Responses || []
+
 
 
 var File = Files.pop();
+var output_dir= _article.pdf_id + "/" + _article.article_id + "/" + _article.quality +'/';
+
+
 if(File)
 {
 
-_uploadArticle( _article , File , File, success , fail   , Files)
+_uploadArticle( _article , File ,output_dir+ File, success , fail   , Files , Responses)
 
 }
 else
@@ -284,7 +293,7 @@ else
 
 
 
-var query = SubArticleModel.findOneAndUpdate({_id:_article._id}, {$set:{status:1 } }, {new: true}  );
+var query = SubArticleModel.findOneAndUpdate({_id:_article._id}, {$set:{status:2  , SubArticlesImages: Responses} }, {new: true}  );
 
 
 // execute the query at a later time
