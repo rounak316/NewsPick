@@ -95,9 +95,9 @@ ArticleConverter( 'sh ./test.sh '  + splitter_data  , function() {console.log('y
 }
 
 
-ShellHandler('sh ./downloadFile.sh ' + url ,success , failure )
+ShellHandler('sh ./downloadFile.sh ' + req.body.url ,success , failure )
 
-res.send('sh ImageCutter.sh '  + splitter_data  )
+res.send( 'sh ./downloadFile.sh ' + req.body.url   )
 
 
 })

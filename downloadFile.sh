@@ -1,1 +1,1 @@
-sudo curl -o pic.jpg $1
+curl -o pic.jpg $1
