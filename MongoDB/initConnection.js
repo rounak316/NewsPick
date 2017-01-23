@@ -15,13 +15,13 @@ var PDFSchema = require('./PDFSchema.js').PDF
 
 
 
+var SubArticleSchema = require('./Subarticles.js').SubArticleSchema
 
 
 
+var PDF = mongoose.model('PDF', PDFSchema);
 
-var PDF = mongoose.model('PDFS', PDFSchema);
-
-
+var SubArticle =  = mongoose.model('ARTICLES', SubArticleSchema);
 
 
 
@@ -104,10 +104,13 @@ try
 {
 
   var splitter_data = param.splitter_data;
-var pdf_id = param.pdf_id;
+var pdf_id = param._id;
+var article_id = param.article_id;
 var page_no = param.page_no;
 var url = param.url
 var quality = param.quality
+
+
 
 
 
@@ -121,6 +124,26 @@ for(var Article of Articles)
 
 if(Article._id == pdf_id)
 {
+
+var save_sub_article = { pdf_id: pdf_id, article_id: article_id , page_no: , Location: , splitter_data:splitter_data , quality: quality }; 
+
+
+
+var sub_article = new SubArticle(save_sub_article);
+
+
+
+
+sub_article.save(function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Saved SubArticle');
+  }
+});
+
+
+
 
 res.send(Article)
 return
