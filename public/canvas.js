@@ -101,7 +101,7 @@ $.ajax({
 
           Data_Pic_Images = data;
 
-          var src = Data_Pic_Images.Articles["SD"][page].Image;
+          var src = Data_Pic_Images.Articles["FD"][page].Image;
 
           CarouselInit(Data_Pic_Images.Articles["THUMB"])
 
