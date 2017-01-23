@@ -21,7 +21,7 @@ var SubArticleSchema = require('./Subarticles.js').SubArticleSchema
 
 var PDF = mongoose.model('PDF', PDFSchema);
 
-var SubArticle =  = mongoose.model('ARTICLES', SubArticleSchema);
+var SubArticle =  mongoose.model('ARTICLES', SubArticleSchema);
 
 
 
