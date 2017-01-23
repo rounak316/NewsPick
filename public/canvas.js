@@ -477,7 +477,7 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-  var scale_matrix = 3;
+  var scale_matrix = 1;
 
   var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
 
