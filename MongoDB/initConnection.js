@@ -88,7 +88,7 @@ PDF.findOne({_id: _id}  , function(err, articles) {
     res.send({})
 else
   // object of all the users
-res.send(articles.Articles)
+res.send(articles)
 });
 
 
