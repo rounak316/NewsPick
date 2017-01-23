@@ -83,7 +83,7 @@ else
 }
 
 
-PDF.findOne({_id: _id}  , '-_id Articles', function(err, articles) {
+PDF.findOne({_id: _id}  , function(err, articles) {
   if (err || !articles) 
     res.send({})
 else
