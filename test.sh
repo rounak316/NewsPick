@@ -40,7 +40,7 @@ if output=$(identify -format "%[fx:w]x%[fx:h]" pic.jpg); then
     CMD='convert -quiet -size '$output' xc:white -stroke none  -strokewidth 0 -fill "rgba( 0, 0, 0 , 1 )" '$rectangleSubCommand' -fill "rgba( 255, 255, 255 , 1 )" '$PREVIOUS_TMP' "draw_rect.png"'
     $(echo $CMD > CMD)
     if output=$(sh "CMD"); then
-    	if convert -quiet pic.jpg   draw_rect.png   -compose screen    -composite -trim 'Articles/draw_rect'"$2"'.png';then
+    	if convert -quiet pic.jpg   draw_rect.png   -compose screen    -composite -trim 'Articles/draw_rect'"$2"'.jng';then
     		# echo "Yes"$convert pic.jpg   draw_rect.png   -compose screen -crop $3   -composite  'Articles/draw_rect'"$2"'.png'
 			
 			PREVIOUS_TMP=$rectangleSubCommand
