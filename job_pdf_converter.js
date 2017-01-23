@@ -106,6 +106,9 @@ for(var _tmp of ARTICLES_SHELL_OUTPUT_1)
 
    var ARTICLES_QUALITY = ARTICLES_SHELL_OUTPUT_2.splice(1,ARTICLES_SHELL_OUTPUT_2.length ) ;
 var __id = mongoose.Types.ObjectId();
+console.log(__id)
+console.log('*****************************')
+
 for(var tmp_i in ARTICLES_QUALITY)
 {
 
