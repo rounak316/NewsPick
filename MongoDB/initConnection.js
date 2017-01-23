@@ -105,13 +105,35 @@ function findArticleForSplit(res , param , article)
 try
 {
 
-  var splitter_data = param.splitter_data;
+  var _splitter_data = param.splitter_data;
 var pdf_id = article._id;
 var article_id = param.article_id;
 
 var url = param.url
 var quality = param.quality
 var Location = param.Location
+
+var splitter_data =""
+for(var a of _splitter_data)
+{
+
+for(var b of a)
+{
+
+
+splitter_data+=b+"|"
+
+}
+
+splitter_data=splitter_data.slice( 0 , splitter_data.length-1)
+
+splitter_data+="_"
+
+
+}
+splitter_data=splitter_data.slice( 0 , splitter_data.length-1)
+
+
 
 
 
