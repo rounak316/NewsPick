@@ -492,7 +492,7 @@ var _x1 =(scale_matrix*__x1) + (scale_matrix*__y1)
 var _x1 =(scale_matrix*__x1) + (scale_matrix*__y1)
 
 
-      clipboard.push( (__x1*scale_matrix) + "," + (__y1*scale_matrix))+":"+(__x2*scale_matrix)+','+(__y2*scale_matrix) );
+      clipboard.push( (__x1*scale_matrix) + "," + (__y1*scale_matrix)+":"+(__x2*scale_matrix)+','+(__y2*scale_matrix) );
 
 
 if(_default)
