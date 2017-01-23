@@ -78,7 +78,7 @@ MongoDB.pdf_find_articles(res , _id)
 app.post('/splitArticles', function (req, res) {
 
 
-var _splitter_data = req.body.splitter_data;
+var splitter_data = req.body.splitter_data;
 
 
 
