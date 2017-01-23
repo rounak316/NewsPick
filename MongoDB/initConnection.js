@@ -97,20 +97,84 @@ res.send(articles.Articles)
 }
 
 
-var articles = function(res , param)
+function findArticleForSplit(res , param , article) 
 {
+
+try
+{
+
+  var splitter_data = param.splitter_data;
+var pdf_id = param.pdf_id;
+var page_no = param.page_no;
+var url = param.url
+var quality = param.quality
+
+
+
+var Articles = article.Articles[quality];
+
+if(!Articles)
+res.send(Articles)
+
+for(var Article of Articles)
+{
+
+if(Article._id == pdf_id)
+{
+
+res.send(Article)
+return
+}
+
+
+}
+
+res.send('{}' + article)
+
+}
+catch(ex)
+{
+throw new Error();
+
+}
+
+
+}
+
+
+var splitArticles = function(res , param)
+{
+
+var _id = param._id;
 
 
 
 var pdf = new PDF();
 
 
-PDF.find(param, function(err, pdf) {
-  if (err) 
-    res.send('error')
-else
+PDF.findOne(  {_id:_id }, function(err, article) {
+  if (err || !article)  
+   res.send('{}')
+else{
   // object of all the users
-res.send(pdf)
+
+console.log(article)
+try
+{
+findArticleForSplit(res , param , article)
+}
+catch(ex)
+{
+throw new Error();
+
+}
+
+
+}
+
+
+
+
 });
 
 
@@ -128,4 +192,4 @@ exports.pdf_find_by_folder = pdf_find_by_folder;
 exports.pdf_find_articles = pdf_find_articles
 
 
-exports.articles = articles
+exports.splitArticles = splitArticles

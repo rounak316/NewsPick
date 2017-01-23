@@ -73,7 +73,7 @@ MongoDB.pdf_find_articles(res , _id)
 
 
 
-app.post('/getPdfStream/', function (req, res) {
+app.post('/splitArticles', function (req, res) {
 
 
 var splitter_data = req.body.splitter_data;
@@ -82,7 +82,15 @@ var page_no = req.body.page_no;
 var url = req.body.url
 var quality = req.body.quality
 
-console.log(req.body.url + " " + req.body.id + " " + req.body.folder)
+
+if( !splitter_data || !pdf_id || !page_no || !url || !quality )
+{
+throw new Error()
+return
+}
+
+
+
 
 function failure()
 {
@@ -100,11 +108,17 @@ ArticleConverter( 'sh ./test.sh '  + splitter_data  , function() {console.log('y
 // ShellHandler('sh ./downloadFile.sh ' + req.body.url ,success , failure )
 
 
+try
+{
+MongoDB.splitArticles(res,req.body)
+}
+catch( err)
+{
 
-MongoDB.articles(res,req.body)
+  res.send('{}')
 
-// res.send( req.body   )
 
+}
 
 })
 

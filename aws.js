@@ -89,7 +89,7 @@ else
 {
 
      console.log('S3 Upload Success : ',data);
-     uploadForLoop(_pdf , success , failure , Articles)
+     uploadForLoop(_pdf , success , failure , Articles , Files)
 
 
 }
@@ -104,8 +104,8 @@ else
 
 
 
-var Files = [];
-function uploadForLoop(_pdf , success , fail , Articles)
+
+function uploadForLoop(_pdf , success , fail , Articles , Files)
 {
 
 
@@ -161,12 +161,12 @@ function uploadAll(_pdf , success , failure, Articles)
 {
 
     var dir = 'ShellImages/' + _pdf.Folder+'/'+_pdf._id ;
-
+var Files = [];
 Files = ListFiles(dir);
 console.log(dir)
 
 console.log(_pdf)
-uploadForLoop( _pdf ,   success , failure,Articles );
+uploadForLoop( _pdf ,   success , failure,Articles , Files );
 
 
 
