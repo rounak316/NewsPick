@@ -479,20 +479,19 @@ for(i of SpaceRect)
 
   var scale_matrix = 3;
 
-  var __x1 = Math.round(CropBoxData.x) ;
+  var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
 
-  var __y1 = Math.round(CropBoxData.y) 
+  var __y1 = Math.round(CropBoxData.y*scale_matrix) 
 
-  var __x2 = Math.round(CropBoxData.x+CropBoxData.width);
+  var __x2 = Math.round((CropBoxData.x*scale_matrix)+(CropBoxData.width*scale_matrix));
 
-  var __y2 = Math.round(CropBoxData.y+CropBoxData.height) ;
-
-
-var _x1 =(scale_matrix*__x1) + (scale_matrix*__y1)
-var _x1 =(scale_matrix*__x1) + (scale_matrix*__y1)
+  var __y2 = Math.round( (  CropBoxData.y*scale_matrix)+(CropBoxData.height *scale_matrix ) ) ;
 
 
-      clipboard.push( (__x1*scale_matrix) + "," + (__y1*scale_matrix)+":"+(__x2*scale_matrix)+','+(__y2*scale_matrix) );
+
+
+
+      clipboard.push( (__x1) + "," + (__y1)+":"+(__x2)+','+(__y2) );
 
 
 if(_default)
