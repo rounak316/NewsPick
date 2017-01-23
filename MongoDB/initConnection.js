@@ -125,7 +125,7 @@ for(var Article of Articles)
 if(Article._id == pdf_id)
 {
 
-var save_sub_article = { pdf_id: pdf_id, article_id: article_id , page_no:page_no , Location: , splitter_data:splitter_data , quality: quality }; 
+var save_sub_article = { pdf_id: pdf_id, article_id: article_id , page_no:page_no , Location: Location, splitter_data:splitter_data , quality: quality }; 
 
 
 
