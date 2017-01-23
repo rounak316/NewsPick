@@ -106,10 +106,10 @@ try
   var splitter_data = param.splitter_data;
 var pdf_id = param._id;
 var article_id = param.article_id;
-var page_no = param.page_no;
+var page_no = article.page_no;
 var url = param.url
 var quality = param.quality
-
+var Location = article.Location
 
 
 
