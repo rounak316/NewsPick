@@ -14,7 +14,7 @@ var article_id =  Data_Pic_Images.Articles["SD"][page]._id;
 var page_no = page;
 var url = "URL";
 var quality = "FD";
-var Location = Data_Pic_Images.Articles["SD"][page].Image;
+var Location = Data_Pic_Images.Articles[quality][page].Image;
 
 
 var body = {
