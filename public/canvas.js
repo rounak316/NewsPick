@@ -13,7 +13,7 @@ var pdf_id =  Data_Pic_Images._id;
 
 var page_no = page;
 var url = "URL";
-var quality = "FD";
+var quality = "SD";
 var article_id =  Data_Pic_Images.Articles[quality][page]._id;
 var Location = Data_Pic_Images.Articles[quality][page].Image;
 
