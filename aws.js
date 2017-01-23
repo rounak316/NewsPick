@@ -64,7 +64,7 @@ else
  }
 
 
-function _upload(_pdf , inpFilePath , outCloudPath  ,success, failure , Articles)
+function _upload(_pdf , inpFilePath , outCloudPath  ,success, failure , Articles , Files)
 {
     var bodystream = fs.createReadStream(inpFilePath);
 
@@ -112,7 +112,7 @@ function uploadForLoop(_pdf , success , fail , Articles , Files)
 var File = Files.pop();
 if(File)
 {
-_upload(_pdf , File , File, success , fail ,Articles )
+_upload(_pdf , File , File, success , fail ,Articles  , Files)
 }
 else
 {
