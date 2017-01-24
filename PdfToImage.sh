@@ -71,7 +71,7 @@ else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r30 -dJPEGQ=10 -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r30  -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"thumb/ "THUMB"
 else
 ClearShit $ImageOutput
