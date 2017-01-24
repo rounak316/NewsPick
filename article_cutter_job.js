@@ -64,7 +64,7 @@ function ShellJobSplitIntoSubArticle(_article , success , failure)
 console.log('sh ./test.sh "'  +  _article.splitter_data + '"' )
 
 //COVERTER
-ShellHandler('sh ./test.sh "'  +  _article.splitter_data + '"' , function(){   UploadAllArticles( _article , success , failure )    } , failure )
+ShellHandler('bash ./test.sh "'  +  _article.splitter_data + '"' , function(){   UploadAllArticles( _article , success , failure )    } , failure )
 
 
 }
@@ -95,7 +95,7 @@ ShellHandler('sh ./downloadFile.sh '  + url_sub_article  ,function(){ console.lo
 function CutArticles(tmp_file_article , splitter_data , success , failure )
 {
 
-ShellHandler('sh ./test.sh "' + splitter_data + '"' ,success , failure )
+ShellHandler('bash ./test.sh "' + splitter_data + '"' ,success , failure )
 }
 
 

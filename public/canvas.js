@@ -10,11 +10,12 @@ function initPublishButton()
 
 var splitter_data = CLIPBOARD
 var pdf_id =  Data_Pic_Images._id;
-var article_id =  Data_Pic_Images.Articles["SD"][page]._id;
+
 var page_no = page;
 var url = "URL";
 var quality = "SD";
-var Location = Data_Pic_Images.Articles["SD"][page].Image;
+var article_id =  Data_Pic_Images.Articles[quality][page]._id;
+var Location = Data_Pic_Images.Articles[quality][page].Image;
 
 
 var body = {
@@ -443,6 +444,8 @@ ctxNew.putImageData(imgData , CropBoxData.x , CropBoxData.y);
 }
 
 
+
+
 function clearRect(image)
 {
 var elem_img =  _backupImage;
@@ -474,7 +477,21 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-      clipboard.push( Math.round(CropBoxData.x) + "," + Math.round(CropBoxData.y)+":"+Math.round(CropBoxData.x+CropBoxData.width)+','+Math.round(CropBoxData.y+CropBoxData.height) );
+  var scale_matrix = 1;
+
+  var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
+
+  var __y1 = Math.round(CropBoxData.y*scale_matrix) 
+
+  var __x2 = Math.round((CropBoxData.x*scale_matrix)+(CropBoxData.width*scale_matrix));
+
+  var __y2 = Math.round( (  CropBoxData.y*scale_matrix)+(CropBoxData.height *scale_matrix ) ) ;
+
+
+
+
+
+      clipboard.push( (__x1) + "," + (__y1)+":"+(__x2)+','+(__y2) );
 
 
 if(_default)

@@ -79,6 +79,10 @@ app.post('/splitArticles', function (req, res) {
 
 
 var splitter_data = req.body.splitter_data;
+
+
+
+
 var pdf_id = req.body.pdf_id;
 var page_no = req.body.page_no;
 var url = req.body.url
