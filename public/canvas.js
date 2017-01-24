@@ -54,7 +54,7 @@ var par = document.createElement('div')
 par.setAttribute('class' , 'carousel-item active slide')
 var _img = document.createElement('img')
 _img.setAttribute('class' , 'd-block img-fluid slide')
-_img.setAttribute('src',"https://s3.ap-south-1.amazonaws.com/prakhargyan/" + img.Image)
+_img.setAttribute('src',"https://prakhargyan.s3.ap-south-1.amazonaws.com/" + img.Image)
 par.append(_img)
 
 
@@ -106,7 +106,7 @@ $.ajax({
           CarouselInit(Data_Pic_Images.Articles["THUMB"])
 
           console.log(src + " __" + page)
-            $('#image')[0].src = "https://s3.ap-south-1.amazonaws.com/prakhargyan/" + src;
+            $('#image')[0].src = "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + src;
           callback(src);
 
         }
@@ -477,7 +477,7 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-  var scale_matrix = 3;
+  var scale_matrix = 10;
 
   var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
 
