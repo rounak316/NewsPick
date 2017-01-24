@@ -13,7 +13,7 @@ var pdf_id =  Data_Pic_Images._id;
 
 var page_no = page;
 var url = "URL";
-var quality = "SD";
+var quality = "FD";
 var article_id =  Data_Pic_Images.Articles[quality][page]._id;
 var Location = Data_Pic_Images.Articles[quality][page].Image;
 
@@ -101,9 +101,9 @@ $.ajax({
 
           Data_Pic_Images = data;
 
-          var src = Data_Pic_Images.Articles["THUMB"][page].Image;
+          var src = Data_Pic_Images.Articles["SD"][page].Image;
 
-          CarouselInit(Data_Pic_Images.Articles["THUMB"])
+          CarouselInit(Data_Pic_Images.Articles["SD"])
 
           console.log(src + " __" + page)
             $('#image')[0].src = "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + src;
@@ -477,7 +477,7 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-  var scale_matrix = 10;
+  var scale_matrix = 4;
 
   var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
 
