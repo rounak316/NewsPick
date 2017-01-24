@@ -46,28 +46,28 @@ if !(resetDirector $ImageOutput);then
 echoerr "Unable To Create Directory.. Check for required permissions"
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r75 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r75  -dDownScaleFactor=5 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"sd/ "SD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r225 -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r300  -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"fd/ "FD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r150 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r150  -dDownScaleFactor=2 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"hd/ "HD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r15 -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r15 -dDownScaleFactor=20 -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"thumb/ "THUMB"
 else
 ClearShit $ImageOutput
