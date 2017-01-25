@@ -186,7 +186,7 @@ height: 50px;
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -197,7 +197,7 @@ height: 50px;
     </ul>
   
      
-      <button id="splitIt" class="btn btn-outline-success my-2 my-sm-0" type="submit">Publish</button>
+      <input  class="btn btn-outline-success my-2 my-sm-0" id="date" type="date">
     
   </div>
 </nav>
@@ -210,14 +210,14 @@ height: 50px;
 <div class="container" id="#fileUploader">
 
 
- <input id="fileUpload" type="file" multiple class="model-dummy" >
+ <input id="fileUpload" accept="application/pdf" type="file" multiple class="model-dummy" >
 
 <div class="card" >
 
   <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary" id="virtual_fileUpload">Go somewhere</a>
+    <h4 class="card-title">Upload ePaper</h4>
+    <p class="card-text">Make sure you upload single page ePaper!</p>
+    <a href="#" class="btn btn-primary" id="virtual_fileUpload">Upload</a>
   </div>
 
 <br>
@@ -258,19 +258,19 @@ height: 50px;
 
 
   <button type="button" class="list-group-item list-group-item-action active">
-   PDF Files
+   ePapers
 
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>
-      <input id="date" type="date" >
+      <!-- <input id="date" type="date" > -->
     </div>
   </div>
-</div>
+</div> -->
 
   </button>
 
@@ -419,4 +419,11 @@ height: 50px;
     </script>
 
     <script type="text/javascript" src="js/scripts.js"></script>
+
+<script type="text/javascript">
+  
+$('#splitIt')[0].setAttribute('onclick' , "$('#date').click()");
+
+</script>
+
 </html>
