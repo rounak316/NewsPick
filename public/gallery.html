@@ -1,44 +1,143 @@
-<html lang="en"><head>
-<!--[if IE]>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<![endif]-->
-<meta charset="utf-8">
-<title>blueimp Gallery</title>
-<meta name="description" content="blueimp Gallery is a touch-enabled, responsive and customizable image and video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers. It features swipe, mouse and keyboard navigation, transition effects, slideshow functionality, fullscreen support and on-demand content loading and can be extended to display additional content types.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.css">
-<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery-indicator.css">
-<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery-video.css">
-<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/demo/demo.css">
-</head>
-<body>
-<h1>blueimp Gallery</h1>
+<html lang="en" prefix="og: http://ogp.me/ns#" debug="true" class="wf-myriadpro-n4-active wf-myriadpro-n6-active wf-active"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+    <meta charset="utf-8">
+
+    <title>PhotoSwipe: Responsive JavaScript Image Gallery</title>
+
+    <meta name="description" content="Touch-friendly JavaScript image gallery for mobile and desktop, without dependencies. Responsive layout. Swipe and zoom gestures.">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"> 
+
+    <meta name="author" content="Dmitry Semenov">
+    <link rel="canonical" href="http://photoswipe.com">
+
+    <meta property="og:url" content="http://photoswipe.com">
+    <meta property="og:title" content="PhotoSwipe: Responsive JavaScript Image Gallery">
+    <meta property="og:description" content="Touch-friendly JavaScript image gallery for mobile and desktop, without dependencies. Responsive layout. Swipe and zoom gestures.">
+    <meta property="og:image" content="http://photoswipe.com/test/horizontal-swipe.jpg">
+
+    <link href="https://plus.google.com/102586375605352607718" rel="publisher">
+
+  
+    <link rel="icon apple-touch-icon" href="test/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
+    <link href="http://photoswipe.com/site-assets/site.css?v=4.1.1-1.0.4" rel="stylesheet">
+    <link href="http://photoswipe.com/dist/photoswipe.css?v=4.1.1-1.0.4" rel="stylesheet">
+    <link href="http://photoswipe.com/dist/default-skin/default-skin.css?v=4.1.1-1.0.4" rel="stylesheet">
+    
+    
+      <script type="text/javascript" async="" src="http://mc.yandex.ru/metrika/watch.js"></script><script async="" src="//www.google-analytics.com/analytics.js"></script>
+      <script src="http://photoswipe.com/dist/photoswipe.min.js?v=4.1.1-1.0.4"></script>
+      <script src="http://photoswipe.com/dist/photoswipe-ui-default.min.js?v=4.1.1-1.0.4"></script>
+    
+
+   
+  
 
 
-<br>
-<h2>Lightbox image gallery</h2>
-<!-- The container for the list of example images -->
-<div id="links" class="links"><a href="https://farm1.static.flickr.com/706/31692488423_729f0cbcd8_b.jpg" title="Clouds and sky" data-gallery=""><img src="https://farm1.static.flickr.com/706/31692488423_729f0cbcd8_s.jpg"></a><a href="https://farm1.static.flickr.com/741/32371136861_8c36f81acd_b.jpg" title="Toss-up" data-gallery=""><img src="https://farm1.static.flickr.com/741/32371136861_8c36f81acd_s.jpg"></a><a href="https://farm1.static.flickr.com/288/31689937193_a44449f9e5_b.jpg" title="Winter Sunrise" data-gallery=""><img src="https://farm1.static.flickr.com/288/31689937193_a44449f9e5_s.jpg"></a><a href="https://farm1.static.flickr.com/486/32346988262_d4a26c4fbe_b.jpg" title="On a hill" data-gallery=""><img src="https://farm1.static.flickr.com/486/32346988262_d4a26c4fbe_s.jpg"></a><a href="https://farm1.static.flickr.com/669/32495259385_1d7a4196d6_b.jpg" title="signs of life" data-gallery=""><img src="https://farm1.static.flickr.com/669/32495259385_1d7a4196d6_s.jpg"></a><a href="https://farm1.static.flickr.com/453/32118434040_2b3600a553_b.jpg" title="Market Maze" data-gallery=""><img src="https://farm1.static.flickr.com/453/32118434040_2b3600a553_s.jpg"></a><a href="https://farm1.static.flickr.com/421/32343879622_a6724f0e30_b.jpg" title="Footsteps" data-gallery=""><img src="https://farm1.static.flickr.com/421/32343879622_a6724f0e30_s.jpg"></a><a href="https://farm1.static.flickr.com/270/32117370290_d6c93bc869_b.jpg" title="This is Getting Cirrus" data-gallery=""><img src="https://farm1.static.flickr.com/270/32117370290_d6c93bc869_s.jpg"></a><a href="https://farm1.static.flickr.com/305/32382885641_5cb1bcf980_b.jpg" title="You don't have to see the whole staircase, just take the first step" data-gallery=""><img src="https://farm1.static.flickr.com/305/32382885641_5cb1bcf980_s.jpg"></a><a href="https://farm1.static.flickr.com/552/31683997353_f24e8c0e57_b.jpg" title="Holes in the ice" data-gallery=""><img src="https://farm1.static.flickr.com/552/31683997353_f24e8c0e57_s.jpg"></a><a href="https://farm1.static.flickr.com/415/31650338554_13afe2beaa_b.jpg" title="Early Morning Marsh" data-gallery=""><img src="https://farm1.static.flickr.com/415/31650338554_13afe2beaa_s.jpg"></a><a href="https://farm1.static.flickr.com/662/32382280601_af0dc730d6_b.jpg" title="The Shape of Things ..." data-gallery=""><img src="https://farm1.static.flickr.com/662/32382280601_af0dc730d6_s.jpg"></a><a href="https://farm1.static.flickr.com/281/32351620602_c72cb81ff8_b.jpg" title="Winter colors at lake Bled" data-gallery=""><img src="https://farm1.static.flickr.com/281/32351620602_c72cb81ff8_s.jpg"></a><a href="https://farm1.static.flickr.com/773/31663432124_87d8dab506_b.jpg" title="Lemon Drops" data-gallery=""><img src="https://farm1.static.flickr.com/773/31663432124_87d8dab506_s.jpg"></a><a href="https://farm1.static.flickr.com/442/32466344546_73aebc0213_b.jpg" title="Aurora" data-gallery=""><img src="https://farm1.static.flickr.com/442/32466344546_73aebc0213_s.jpg"></a><a href="https://farm1.static.flickr.com/349/32341880632_77364d8f8c_b.jpg" title="Mercurial" data-gallery=""><img src="https://farm1.static.flickr.com/349/32341880632_77364d8f8c_s.jpg"></a><a href="https://farm1.static.flickr.com/503/32350087742_3b6e8c13d1_b.jpg" title="Solitary Bee" data-gallery=""><img src="https://farm1.static.flickr.com/503/32350087742_3b6e8c13d1_s.jpg"></a><a href="https://farm1.static.flickr.com/547/32377376291_e34246450f_b.jpg" title="faded memories..." data-gallery=""><img src="https://farm1.static.flickr.com/547/32377376291_e34246450f_s.jpg"></a><a href="https://farm1.static.flickr.com/714/32494920425_3cb3522822_b.jpg" title="Elysium" data-gallery=""><img src="https://farm1.static.flickr.com/714/32494920425_3cb3522822_s.jpg"></a><a href="https://farm1.static.flickr.com/299/32463880036_7e84168bc3_b.jpg" title="Exploring Washington coast" data-gallery=""><img src="https://farm1.static.flickr.com/299/32463880036_7e84168bc3_s.jpg"></a><a href="https://farm1.static.flickr.com/322/32377548841_5a82cbbb22_b.jpg" title="Hello" data-gallery=""><img src="https://farm1.static.flickr.com/322/32377548841_5a82cbbb22_s.jpg"></a><a href="https://farm1.static.flickr.com/603/31653284654_0a55eff032_b.jpg" title="Kilauea" data-gallery=""><img src="https://farm1.static.flickr.com/603/31653284654_0a55eff032_s.jpg"></a><a href="https://farm1.static.flickr.com/258/32503981215_5513930555_b.jpg" title="Lansering av TemaFoto.no" data-gallery=""><img src="https://farm1.static.flickr.com/258/32503981215_5513930555_s.jpg"></a><a href="https://farm1.static.flickr.com/761/31654930244_34e8f0ee9e_b.jpg" title="Malmousque" data-gallery=""><img src="https://farm1.static.flickr.com/761/31654930244_34e8f0ee9e_s.jpg"></a><a href="https://farm1.static.flickr.com/344/32127509540_1e4291983a_b.jpg" title="Puente Transbordador - La Boca Buenos Aires in Argentina" data-gallery=""><img src="https://farm1.static.flickr.com/344/32127509540_1e4291983a_s.jpg"></a><a href="https://farm1.static.flickr.com/552/32119632590_cc287d3eab_b.jpg" title="There there Teddy" data-gallery=""><img src="https://farm1.static.flickr.com/552/32119632590_cc287d3eab_s.jpg"></a><a href="https://farm1.static.flickr.com/259/31650980034_86a21d6b76_b.jpg" title="Sora [Explored]" data-gallery=""><img src="https://farm1.static.flickr.com/259/31650980034_86a21d6b76_s.jpg"></a><a href="https://farm1.static.flickr.com/278/32499647495_8f0fb2108f_b.jpg" title="Là" data-gallery=""><img src="https://farm1.static.flickr.com/278/32499647495_8f0fb2108f_s.jpg"></a><a href="https://farm1.static.flickr.com/355/31693805203_0d5fd5eae2_b.jpg" title="Nunhide Tower" data-gallery=""><img src="https://farm1.static.flickr.com/355/31693805203_0d5fd5eae2_s.jpg"></a><a href="https://farm1.static.flickr.com/599/31684652613_705a8e59ae_b.jpg" title="sur une mer d'huile" data-gallery=""><img src="https://farm1.static.flickr.com/599/31684652613_705a8e59ae_s.jpg"></a><a href="https://farm1.static.flickr.com/348/32450220666_3a1fc3cc16_b.jpg" title="Solitaire de Townsend / Townsend's solitaire" data-gallery=""><img src="https://farm1.static.flickr.com/348/32450220666_3a1fc3cc16_s.jpg"></a><a href="https://farm1.static.flickr.com/557/31694549233_fef8238015_b.jpg" title="💮 Flores Blancas Pequeñas¸.•´¯`•.¸¸.ஐ" data-gallery=""><img src="https://farm1.static.flickr.com/557/31694549233_fef8238015_s.jpg"></a><a href="https://farm1.static.flickr.com/502/31687842593_cfb21100f8_b.jpg" title="M.I.X.*@SaNaRae" data-gallery=""><img src="https://farm1.static.flickr.com/502/31687842593_cfb21100f8_s.jpg"></a><a href="https://farm1.static.flickr.com/617/32508352145_7cf6f88169_b.jpg" title="Muscicapidae: Saxicola torquatus ♂ - Tarabilla común - African Stonechat" data-gallery=""><img src="https://farm1.static.flickr.com/617/32508352145_7cf6f88169_s.jpg"></a><a href="https://farm1.static.flickr.com/526/32497712375_c43b8cafed_b.jpg" title="Japanese apricot　梅　04" data-gallery=""><img src="https://farm1.static.flickr.com/526/32497712375_c43b8cafed_s.jpg"></a><a href="https://farm1.static.flickr.com/262/32494884255_d0404a4acd_b.jpg" title="Take me walking" data-gallery=""><img src="https://farm1.static.flickr.com/262/32494884255_d0404a4acd_s.jpg"></a><a href="https://farm1.static.flickr.com/385/32343613662_6a643b584f_b.jpg" title="Sunset over Paradise (2016-08-24)" data-gallery=""><img src="https://farm1.static.flickr.com/385/32343613662_6a643b584f_s.jpg"></a><a href="https://farm1.static.flickr.com/482/31654751234_94e95ceaa0_b.jpg" title="Riverside. Part 2." data-gallery=""><img src="https://farm1.static.flickr.com/482/31654751234_94e95ceaa0_s.jpg"></a><a href="https://farm1.static.flickr.com/402/32459674506_067f19f3e6_b.jpg" title="falaise defences" data-gallery=""><img src="https://farm1.static.flickr.com/402/32459674506_067f19f3e6_s.jpg"></a><a href="https://farm1.static.flickr.com/555/31686636363_bc42919874_b.jpg" title="aurora borealis | sólheimasandur | island 2016" data-gallery=""><img src="https://farm1.static.flickr.com/555/31686636363_bc42919874_s.jpg"></a><a href="https://farm1.static.flickr.com/588/32350254672_839fdcf485_b.jpg" title="Un paseo entre viejos árboles." data-gallery=""><img src="https://farm1.static.flickr.com/588/32350254672_839fdcf485_s.jpg"></a><a href="https://farm1.static.flickr.com/718/32127709620_4acac80fc0_b.jpg" title="Keeping the fire alive" data-gallery=""><img src="https://farm1.static.flickr.com/718/32127709620_4acac80fc0_s.jpg"></a><a href="https://farm1.static.flickr.com/386/32376705431_d37c4c4293_b.jpg" title="Opvliegende Ganzen/ Irascible Geese" data-gallery=""><img src="https://farm1.static.flickr.com/386/32376705431_d37c4c4293_s.jpg"></a><a href="https://farm1.static.flickr.com/584/31663479834_f4a1d22a3f_b.jpg" title="Elvis" data-gallery=""><img src="https://farm1.static.flickr.com/584/31663479834_f4a1d22a3f_s.jpg"></a><a href="https://farm1.static.flickr.com/664/32499840085_12fb8a0aa8_b.jpg" title="Medieval midnight..." data-gallery=""><img src="https://farm1.static.flickr.com/664/32499840085_12fb8a0aa8_s.jpg"></a><a href="https://farm1.static.flickr.com/659/31658353594_d2d29e926d_b.jpg" title="who is the smartest? (or dumb and dumber) / a cold day in voeren (7) *explored*" data-gallery=""><img src="https://farm1.static.flickr.com/659/31658353594_d2d29e926d_s.jpg"></a><a href="https://farm1.static.flickr.com/287/31657774064_23564d1662_b.jpg" title="In Remembrance of our beloved king. King Bhumibol Adulyadej 1927-2016" data-gallery=""><img src="https://farm1.static.flickr.com/287/31657774064_23564d1662_s.jpg"></a><a href="https://farm1.static.flickr.com/286/32342256522_9bd6901b0d_b.jpg" title="#837" data-gallery=""><img src="https://farm1.static.flickr.com/286/32342256522_9bd6901b0d_s.jpg"></a><a href="https://farm1.static.flickr.com/454/32497164995_427d48d669_b.jpg" title="feuille morte / dead leaf" data-gallery=""><img src="https://farm1.static.flickr.com/454/32497164995_427d48d669_s.jpg"></a><a href="https://farm1.static.flickr.com/690/32127451930_242b3755c6_b.jpg" title="Dawn along the Quay" data-gallery=""><img src="https://farm1.static.flickr.com/690/32127451930_242b3755c6_s.jpg"></a><a href="https://farm1.static.flickr.com/595/32377875001_cc83fa5474_b.jpg" title="A Little Revealing" data-gallery=""><img src="https://farm1.static.flickr.com/595/32377875001_cc83fa5474_s.jpg"></a><a href="https://farm1.static.flickr.com/398/32353872282_30bb721b12_b.jpg" title="Monday Morning" data-gallery=""><img src="https://farm1.static.flickr.com/398/32353872282_30bb721b12_s.jpg"></a><a href="https://farm1.static.flickr.com/395/32499568965_4b9ffae64f_b.jpg" title="The Power of the West Coast" data-gallery=""><img src="https://farm1.static.flickr.com/395/32499568965_4b9ffae64f_s.jpg"></a><a href="https://farm1.static.flickr.com/470/32349458232_14b397c2f2_b.jpg" title="" data-gallery=""><img src="https://farm1.static.flickr.com/470/32349458232_14b397c2f2_s.jpg"></a><a href="https://farm1.static.flickr.com/275/31647291664_88cf8e4252_b.jpg" title="From Clayton" data-gallery=""><img src="https://farm1.static.flickr.com/275/31647291664_88cf8e4252_s.jpg"></a><a href="https://farm1.static.flickr.com/768/32375463561_be0f119b93_b.jpg" title="Etna Sud - Voragine e Cratere di Sudest" data-gallery=""><img src="https://farm1.static.flickr.com/768/32375463561_be0f119b93_s.jpg"></a><a href="https://farm1.static.flickr.com/648/32504565965_ac8a19c884_b.jpg" title="Charaxes Jasius..." data-gallery=""><img src="https://farm1.static.flickr.com/648/32504565965_ac8a19c884_s.jpg"></a><a href="https://farm1.static.flickr.com/701/31657899534_2012bda99e_b.jpg" title="Wimbledon Common, London" data-gallery=""><img src="https://farm1.static.flickr.com/701/31657899534_2012bda99e_s.jpg"></a><a href="https://farm1.static.flickr.com/680/31649421564_b580e94a87_b.jpg" title="[DC] Inspired Red Son" data-gallery=""><img src="https://farm1.static.flickr.com/680/31649421564_b580e94a87_s.jpg"></a><a href="https://farm1.static.flickr.com/702/32500996495_c0f2650e07_b.jpg" title="Wall Art Aalborg" data-gallery=""><img src="https://farm1.static.flickr.com/702/32500996495_c0f2650e07_s.jpg"></a><a href="https://farm1.static.flickr.com/385/32383862771_dcb6529e9c_b.jpg" title="The Horsehead Nebula" data-gallery=""><img src="https://farm1.static.flickr.com/385/32383862771_dcb6529e9c_s.jpg"></a><a href="https://farm1.static.flickr.com/271/32507337045_fbbdf72d35_b.jpg" title="In my room" data-gallery=""><img src="https://farm1.static.flickr.com/271/32507337045_fbbdf72d35_s.jpg"></a><a href="https://farm1.static.flickr.com/528/32379872571_86455b981d_b.jpg" title="Hiking Villingardalsfjall, Viðoy, Faroe Islands." data-gallery=""><img src="https://farm1.static.flickr.com/528/32379872571_86455b981d_s.jpg"></a></div>
-<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
-<div id="blueimp-gallery" class="blueimp-gallery">
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
+  <body>
+
+    
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-helper.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-gallery.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-gallery-fullscreen.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-gallery-indicator.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-gallery-video.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-gallery-vimeo.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/blueimp-gallery-youtube.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/vendor/jquery.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/demo/demo.js"></script>
 
 
-</body></html>
+    </body>
+    <script type="text/javascript">
+
+var pswpElement = document.querySelectorAll('.pswp')[0];
+
+// build items array
+var items = [
+    {
+        src: 'https://placekitten.com/600/400',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'https://placekitten.com/1200/900',
+        w: 1200,
+        h: 900
+    }
+];
+
+// define options (if needed)
+var options = {
+    // optionName: 'option value'
+    // for example:
+    index: 0 // start at first slide
+};
+
+// Initializes and opens PhotoSwipe
+var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+gallery.init();
+
+    </script>
+
+
+
+
+  
+</html>
