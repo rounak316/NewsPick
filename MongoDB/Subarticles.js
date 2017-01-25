@@ -23,7 +23,9 @@ status: {type:Number , default:0} ,
 
 
 SubArticlesImages : {type:[]}
+,
 
+ Folder: { type: String, default: "00000000" } ,
 
 })
 
