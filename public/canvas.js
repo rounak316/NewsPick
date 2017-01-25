@@ -22,7 +22,7 @@ data[a]=b;
 }
 
 
-var _localStorage = new LocalStorage();
+_localStorage = new LocalStorage();
 
 var Data_Pic_Images = [];
 var CURRENT_PAGE = 0;
