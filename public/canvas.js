@@ -3,7 +3,7 @@
 function LocalStorage()
 {
 
-var data = {}
+data = {}
 
 }
 
