@@ -22,7 +22,7 @@ data[a]=b;
 }
 
 
-var localStorage = new LocalStorage();
+var _localStorage = new LocalStorage();
 
 var Data_Pic_Images = [];
 var CURRENT_PAGE = 0;
@@ -205,7 +205,7 @@ var KeyState = true;
           var index= CroppedArticles.length;
 
 if(index>0)
-$('#previewCroppedArticle')[0].src=  localStorage.getItem(  CroppedArticles[index-1] );
+$('#previewCroppedArticle')[0].src=  _localStorage.getItem(  CroppedArticles[index-1] );
 
 
           KeyState = false;
@@ -246,7 +246,7 @@ function changeCoverImage(id)
 console.log('changeCover')
 
 
-var _image = localStorage.getItem(id)
+var _image = _localStorage.getItem(id)
 
 
 
@@ -273,7 +273,7 @@ img.setAttribute('class','card-img-center');
 
 
 
-img.setAttribute('src' ,localStorage.getItem(id) );
+img.setAttribute('src' ,_localStorage.getItem(id) );
 
 img.setAttribute('alt' , name);
 
@@ -609,7 +609,7 @@ var name_article ='CroppedArticle_'+TimeStamp
 CroppedArticles.push( name_article  );
 
 
-localStorage.setItem( name_article , _newCanvas.toDataURL() );
+_localStorage.setItem( name_article , _newCanvas.toDataURL() );
 
 
 
