@@ -164,7 +164,7 @@ var URL_REDIRECT = '/?article_id=' + pdf._id;
 
 child.find('#edit')[0].setAttribute('href', URL_REDIRECT)
 
-child.appendTo('.list-group');
+child.appendTo('#data-pdf');
 
 
 
@@ -239,6 +239,8 @@ for(File of Files)
 
 
 child[0].removeAttribute('class');
+
+child[0].setAttribute('class','list-group-item');
 
 	child.appendTo($('#fileHolder')[0])
 

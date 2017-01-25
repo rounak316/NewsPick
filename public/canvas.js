@@ -156,6 +156,9 @@ function startCanvasEditor(img_src)
       $('#image').cropper({
  // preview: '.preview',
 
+checkImageOrigin:false,
+
+
 viewMode:1,
   crop: function(e) {
 
