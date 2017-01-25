@@ -61,6 +61,20 @@ MongoDB.pdf_find_by_folder(res , folder)
 
 
 
+app.get('/readEpaper/:folder', function (req, res) {
+
+  var folder = req.params.folder
+
+
+
+MongoDB.findEpaperArticles(folder ,  function(data){  res.send(data) } ,  function(err){  res.send('{}') }   )
+
+
+
+})
+
+
+
 app.get('/getArticles/:id', function (req, res) {
 
   var _id = req.params.id

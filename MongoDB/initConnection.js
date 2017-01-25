@@ -97,6 +97,25 @@ res.send(articles)
 }
 
 
+
+function findEpaperArticles(folder, succeess , failure )
+{
+
+  SubArticle
+
+
+  SubArticle.findOne({Folder: folder}  , function(err, articles) {
+  if (err || !articles) 
+   failure(err)
+else
+  // object of all the users
+succeess(articles)
+});
+
+
+}
+
+
 function findArticleForSplit(res , param , article) 
 {
 
@@ -246,3 +265,5 @@ exports.pdf_find_articles = pdf_find_articles
 
 
 exports.splitArticles = splitArticles
+
+exports.findEpaperArticles = findEpaperArticles
