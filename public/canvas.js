@@ -477,15 +477,15 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-  var scale_matrix = 2;
+  var scale_matrix = 3;
 
-  var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
+  var __x1 = Math.floor(CropBoxData.x*scale_matrix) ;
 
-  var __y1 = Math.round(CropBoxData.y*scale_matrix) 
+  var __y1 = Math.floor(CropBoxData.y*scale_matrix) 
 
-  var __x2 = Math.round((CropBoxData.x*scale_matrix)+(CropBoxData.width*scale_matrix));
+  var __x2 = Math.ceil((CropBoxData.xCropBoxData.width*)*scale_matrix));
 
-  var __y2 = Math.round( (  CropBoxData.y*scale_matrix)+(CropBoxData.height *scale_matrix ) ) ;
+  var __y2 = Math.ceil( (  CropBoxData.y+CropBoxData.height )*scale_matrix ) ;
 
 
 

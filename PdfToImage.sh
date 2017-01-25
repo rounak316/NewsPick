@@ -48,14 +48,14 @@ fi
 
 
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r100   -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r300   -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"fd/ "FD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r50 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r100 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"sd/ "SD"
 printf '\n'
 else
