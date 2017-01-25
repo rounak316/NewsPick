@@ -65,7 +65,7 @@ app.get('/readEpaper/:folder', function (req, res) {
 
   var folder = req.params.folder
 
-
+console.log('Read Epaper')
 
 MongoDB.findEpaperArticles(folder ,  function(data){  res.send(data) } ,  function(err){  res.send('{}') }   )
 
