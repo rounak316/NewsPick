@@ -156,9 +156,6 @@ function startCanvasEditor(img_src)
       $('#image').cropper({
  // preview: '.preview',
 
-checkImageOrigin:false,
-
-
 viewMode:1,
   crop: function(e) {
 
@@ -480,7 +477,7 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-  var scale_matrix = 4;
+  var scale_matrix = 2;
 
   var __x1 = Math.round(CropBoxData.x*scale_matrix) ;
 
