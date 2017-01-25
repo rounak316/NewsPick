@@ -55,7 +55,7 @@ else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r60 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r50 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"sd/ "SD"
 printf '\n'
 else
