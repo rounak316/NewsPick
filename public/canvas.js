@@ -1,3 +1,29 @@
+//Virtual Local Storage
+
+function LocalStorage()
+{
+
+var data = {}
+
+}
+
+LocalStorage.prototype.getItem = function(a , b){
+
+
+return data[a] || null;
+
+}
+LocalStorage.prototype.setItem = function(a , b){
+
+if(a &&b)
+
+data[a]=b;
+
+}
+
+
+var localStorage = new LocalStorage();
+
 var Data_Pic_Images = [];
 var CURRENT_PAGE = 0;
 
