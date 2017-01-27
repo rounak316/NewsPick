@@ -31,63 +31,90 @@
 
 
 
-
-<!-- 211,116:1038,562 -->
-
-
-
-<div class="container-fluid">
-
-
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
- 
-  <div class="carousel-inner slide" role="listbox" >
-    <div class="carousel-item active slide" >
-      <img class="d-block img-fluid slide" src="https://prakhargyan.s3.ap-south-1.amazonaws.com/ShellImages/20170122/588470fcbeba6627fbb3ba59/sd/tmp001.jpg" alt="First slide"  usemap="#planetmap">
-
-    <map name="planetmap">
-<area shape="rect" coords="211,116,1038,562" href="javascript:alert('square')">
-
-</map>
-
-
-    </div>
-
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-<!-- !MODELS -->
-
-
 </body>
 
 <script type="text/javascript">
-	$(document).ready(function(e) {
-    $('img[usemap]').rwdImageMaps();
-});
+function parseInfo()
+{
+  
+$.get('http://localhost/readEpaper/20170125' , function(a){
+
+
+
+for(var b of a)
+{
+  
+var SubArticlesImages = b.SubArticlesImages;
+
+
+
+
+var SVG = SubArticlesImages.pop().SVG;
+
+var parser = new DOMParser();
+var _doc = parser.parseFromString(SVG ,  "text/xml");
+var _parent  =_doc.getElementsByTagName('svg')[0]
+
+var image = document.createElement('image')
+image.setAttribute('preserveAspectRatio' , 'xMinYMin slice')
+image.setAttribute('width' , '100%')
+image.setAttribute('height' , '100%')
+image.setAttribute('x' , '0')
+image.setAttribute('y' , '0')
+image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
+
+
+_parent.innerHTML = '<style type="text/css">  .article:hover {fill:red;  stroke: white;stroke-width: 4px; } </style>' + _parent.innerHTML
+
+_parent.innerHTML += image.outerHTML + "</image>"
+
+
+
+
+for(var c of SubArticlesImages)
+{
+  var SVG = c.SVG;
+
+
+var parser = new DOMParser();
+var doc = parser.parseFromString(SVG ,  "text/xml");
+var parent  =doc.getElementsByTagName('svg')[0]
+
+_parent.innerHTML +='<g stroke="green" fill="white" stroke-width="5">'  + parent.innerHTML + "</g>"
+
+
+
+// _parent.innerHTML += parent.innerHTML 
+
+
+}
+
+
+
+$(_parent).find('g').attr('fill-opacity', '0.1');
+$(_parent).find('g').attr('fill', '');
+$(_parent).find('g').attr('class', 'article');
+
+
+
+document.body.insertAdjacentElement( 'afterbegin' , _parent)
+$('svg').attr('width' , 500   )
+$('svg').attr('height' ,    1000)
+
+}
+
+
+
+})
+
+
+
+
+
+}
+
+
+parseInfo()
 	// $('img[usemap]').rwdImageMaps();
 
 

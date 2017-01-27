@@ -41,8 +41,14 @@ if output=$(identify -format "%[fx:w]x%[fx:h]" pic.jpg); then
     $(echo $CMD > CMD)
     if output=$(sh "CMD"); then
     	if convert -quiet pic.jpg   draw_rect.png   -compose screen    -composite -trim 'Articles/draw_rect'"$2"'.jpg';then
+		
 
-    		# echo "Yes"$convert pic.jpg   draw_rect.png   -compose screen -crop $3   -composite  'Articles/draw_rect'"$2"'.png'
+			if bash experiments/png2svg.sh draw_rect.png $2;then
+	    			echo "SVG CONVERTED"
+			else
+					echoerr "SVG FAILED"
+			fi
+	    		# echo "Yes"$convert pic.jpg   draw_rect.png   -compose screen -crop $3   -composite  'Articles/draw_rect'"$2"'.png'
 			
     			# if ;then
     			# 	convert 'Articles/draw_rect'"$2"'.jpg'    -resize 128x128  'ArticlesThumb/draw_rect'"$2"'.jpg'
@@ -67,11 +73,15 @@ fi
 
 }
 DirectoryName="Articles"
+SvgArticles="SvgArticles"
 
 initArticleDirectory()
 {
 	rm -fr ./"$DirectoryName"
+	rm -fr ./"$SvgArticles"
+
 	mkdir "$DirectoryName"
+	mkdir "$SvgArticles"
 }
 
 INPUT="$@"

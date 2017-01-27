@@ -17,11 +17,7 @@ max-width: 100%;
 }*/
 
 
-#fileUploader
-{
 
-  overflow-y: scroll;
-}
 
 body, html {
   margin: 0;
@@ -53,7 +49,7 @@ height: 00px;
 
   #right-top{
   	width: 100%;
-  	/*height: calc(70% - 0px);*/
+  	height: calc(70% - 0px);
     height: 100%;
   	overflow-y: scroll;
   }
@@ -65,9 +61,17 @@ height: 00px;
  
   }*/
 
+    #left-top{
+    width: 100%;
+    height: 30%;
+    height: 100%;
+    
+  }
+
  #left-bottom{
   	width: 100%;
-  	height: calc(100% - 50px)
+  	height: calc(70%);
+    /*overflow-y: scroll;*/
 
   }
 
@@ -186,7 +190,7 @@ height: 50px;
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -197,27 +201,27 @@ height: 50px;
     </ul>
   
      
-      <input  class="btn btn-outline-success my-2 my-sm-0" id="date" type="date">
+      <button id="splitIt" class="btn btn-outline-success my-2 my-sm-0" type="submit">Publish</button>
     
   </div>
 </nav>
 
 
 </div>
- <div id="left-bottom">
+ <div id="left-top">
 <div >
 
 <div class="container" id="#fileUploader">
 
 
- <input id="fileUpload" accept="application/pdf" type="file" multiple class="model-dummy" >
+ <input id="fileUpload" type="file" multiple class="model-dummy" >
 
 <div class="card" >
 
   <div class="card-block">
-    <h4 class="card-title">Upload ePaper</h4>
-    <p class="card-text">Make sure you upload single page ePaper!</p>
-    <a href="#" class="btn btn-primary" id="virtual_fileUpload">Upload</a>
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary" id="virtual_fileUpload">Go somewhere</a>
   </div>
 
 <br>
@@ -227,6 +231,7 @@ height: 50px;
 
 
 </div>
+
 
 
 <div id="fileHolder" class="list-group">
@@ -243,6 +248,42 @@ height: 50px;
 
 </div>
 
+<dir id="left-bottom"  >
+  
+
+
+<ul class="list-group" style="width: 100%;height: 300px;overflow-y: scroll;" >
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+
+
+
+</dir>
+
   </div>   
 
   <div class="col-6" id="right">
@@ -258,19 +299,19 @@ height: 50px;
 
 
   <button type="button" class="list-group-item list-group-item-action active">
-   ePapers
+   PDF Files
 
 
-<!-- <div class="row">
+<div class="row">
   <div class="col-lg-6">
     <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>
-      <!-- <input id="date" type="date" > -->
+      <input id="date" type="date" >
     </div>
   </div>
-</div> -->
+</div>
 
   </button>
 
@@ -419,11 +460,4 @@ height: 50px;
     </script>
 
     <script type="text/javascript" src="js/scripts.js"></script>
-
-<script type="text/javascript">
-  
-$('#splitIt')[0].setAttribute('onclick' , "$('#date').click()");
-
-</script>
-
 </html>

@@ -104,7 +104,7 @@ function findEpaperArticles(folder, succeess , failure )
   SubArticle
 
 
-  SubArticle.findOne({Folder: folder}  , function(err, articles) {
+  SubArticle.find({Folder: folder , _id : new ObjectId("588bab335f0b245c32f5ba45")  }  , function(err, articles) {
   if (err || !articles) 
    failure(err)
 else

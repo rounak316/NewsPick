@@ -27,6 +27,9 @@ SubArticlesImages : {type:[]}
 
  Folder: { type: String, default: "00000000" } ,
 
+
+ SVG_path: { type: {}  , default: {} }
+
 })
 
 

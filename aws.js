@@ -5,7 +5,7 @@ var fs = require('fs')
 var mongoose = require('mongoose')
 var PDFSchema = require('./MongoDB/PDFSchema.js').PDF
 var PDFModel = mongoose.model('PDF', PDFSchema);
-
+var FileToString = require('./Scripts/fileRead.js')
 
 var SubArticleSchema = require('./MongoDB/Subarticles.js').SubArticleSchema
 var SubArticleModel = mongoose.model('ARTICLES', SubArticleSchema);
@@ -27,7 +27,7 @@ AWS.config.update({
 
 
 
-
+var Files_Backup = [];
 
 function upload(inpFilePath , outCloudPath , name ,success, failure)
 {
@@ -165,12 +165,15 @@ function uploadAll(_pdf , success , failure, Articles , _dir)
 {
 
     var dir = _dir + _pdf.Folder+'/'+_pdf._id ;
-var Files = [];
-Files = ListFiles(dir);
-console.log(dir)
 
-console.log(_pdf)
-uploadForLoop( _pdf ,   success , failure,Articles , Files );
+ListFiles( function(Files){   ;successAfterFileDirRead( Files );  } ,  dir);
+
+
+function successAfterFileDirRead(Files)
+{
+ uploadForLoop( _pdf ,   success , failure,Articles , Files );
+
+}
 
 
 
@@ -181,13 +184,16 @@ function uploadAllArticles(_article , success , failure , _dir)
 {
 
     var dir = dir='Articles/';
-var Files = [];
-Files = ListFiles(dir);
 
 
+ListFiles( function(Files){  successAfterFileDirRead( Files );  } ,  dir);
 
+
+function successAfterFileDirRead(Files)
+{
 uploadForLoopForArticle( _article ,   success , failure , Files );
 
+}
 
 
 }
@@ -256,8 +262,27 @@ else
 
      console.log('S3 Upload Success : ',data);
 
-     Responses.push(data)
+
+
+      FileToString.readSVGData(inpFilePath , function(SVG_DATA){ 
+
+
+        data.SVG = SVG_DATA;
+
+   Responses.push(data)
      uploadForLoopForArticle(_article , success , failure  , Files, Responses)
+
+
+
+         } 
+        )
+
+
+
+//****
+
+
+
 
 
 }
@@ -278,12 +303,20 @@ Responses = Responses || []
 
 
 
+
 var File = Files.pop();
+
+
 var output_dir= _article.pdf_id + "/" + _article.article_id + "/" + _article.quality +'/';
+
+
+
+
 
 
 if(File)
 {
+Files_Backup.unshift(File)
 
 _uploadArticle( _article , File ,output_dir+ File, success , fail   , Files , Responses)
 
@@ -291,9 +324,24 @@ _uploadArticle( _article , File ,output_dir+ File, success , fail   , Files , Re
 else
 {
 
+console.log(Files_Backup)
+console.log("*********")
+
+// Insert Code to save svg in each subarticles
+
+callBiatchToUpdateDBStatus();
 
 
-var query = SubArticleModel.findOneAndUpdate({_id:_article._id}, {$set:{status:2  , SubArticlesImages: Responses} }, {new: true}  );
+
+// FileToString.readSVGData(Files_Backup , function(SVG_DATA){ callBiatchToUpdateDBStatus(SVG_DATA) } )
+
+
+function callBiatchToUpdateDBStatus()
+{
+
+//---------------
+
+var query = SubArticleModel.findOneAndUpdate({_id:_article._id}, {$set:{status:2  , SubArticlesImages: Responses  } }, {new: true}  );
 
 
 // execute the query at a later time
@@ -321,6 +369,9 @@ else
     //All Uploaded
 }
 
+
+}
+//-----------------
 
 
 }
