@@ -98,10 +98,10 @@ res.send(articles)
 
 
 
-function findEpaperArticles(folder, succeess , failure )
+function findEpaperArticles(article_id, succeess , failure )
 {
 
-  SubArticle.find({  _id : new ObjectId("588be62a897342619fbf3e82")  }  , function(err, articles) {
+  SubArticle.find({  _id : new ObjectId(article_id)  }  , function(err, articles) {
   if (err || !articles) 
    failure(err)
 else
