@@ -5,7 +5,8 @@
 
 <style type="text/css">
 
-
+html, body { background: #000000 ; margin:0; padding:0; overflow:hidden; }
+svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 
 </style>
 
@@ -55,6 +56,8 @@ var parser = new DOMParser();
 var _doc = parser.parseFromString(SVG ,  "text/xml");
 var _parent  =_doc.getElementsByTagName('svg')[0]
 
+b.Location = b.Location.replace('fd' , 'thumb')
+
 var image = document.createElement('image')
 image.setAttribute('preserveAspectRatio' , 'xMinYMin slice')
 image.setAttribute('width' , '100%')
@@ -91,15 +94,20 @@ _parent.innerHTML += parent.innerHTML
 
 
 
-$(_parent).find('g').attr('fill-opacity', '0.1');
-$(_parent).find('g').attr('fill', 'transparent');
-$(_parent).find('g').attr('class', 'article');
+$(_parent).find('path').attr('fill-opacity', '0.1');
+$(_parent).find('path').attr('fill', 'transparent');
+$(_parent).find('path').attr('class', 'article');
 
+
+
+// _parent.innerHTML = "<center>" + _parent.innerHTML + "</center>"
 
 
 document.body.insertAdjacentElement( 'afterbegin' , _parent)
-// $('svg').attr('width' , 500   )
-// $('svg').attr('height' ,    1000)
+$('svg').attr('width' , "100%" )   
+$('svg').attr('height' ,   "100%" )  
+// $('svg').find('path')attr("fill", "black");
+
 
 }
 

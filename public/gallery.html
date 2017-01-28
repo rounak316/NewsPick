@@ -23,6 +23,8 @@
     <link href="http://photoswipe.com/dist/photoswipe.css?v=4.1.1-1.0.4" rel="stylesheet">
     <link href="http://photoswipe.com/dist/default-skin/default-skin.css?v=4.1.1-1.0.4" rel="stylesheet">
     
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"  crossorigin="anonymous"></script>
+
     
       <script type="text/javascript" async="" src="http://mc.yandex.ru/metrika/watch.js"></script><script async="" src="//www.google-analytics.com/analytics.js"></script>
       <script src="http://photoswipe.com/dist/photoswipe.min.js?v=4.1.1-1.0.4"></script>
@@ -31,7 +33,13 @@
 
    
   
+<style type="text/css">
+    
+html, body { background: #000000 ; margin:0; padding:0; overflow:hidden; }
+svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 
+
+</style>
 
   <body>
 
@@ -123,19 +131,144 @@ var items = [
     }
 ];
 
+items = []
 // define options (if needed)
-var options = {
-    // optionName: 'option value'
-    // for example:
-    index: 0 // start at first slide
-};
+
 
 // Initializes and opens PhotoSwipe
+function initGallery(index)
+{
+
+    var options = {
+    // optionName: 'option value'
+    // for example:
+    index:index || 0 // start at first slide
+};
+
+
 var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
 gallery.init();
-
+}
     </script>
 
+
+
+<script type="text/javascript">
+
+console.log(items)
+
+function parseInfo()
+{
+  
+$.get('http://localhost/readEpaper/20170125' , function(a){
+
+
+
+for(var b of a)
+{
+  
+var SubArticlesImages = b.SubArticlesImages;
+
+
+var POP = SubArticlesImages.pop()
+
+var SVG = POP.SVG;
+
+var parser = new DOMParser();
+var _doc = parser.parseFromString(SVG ,  "text/xml");
+var _parent  =_doc.getElementsByTagName('svg')[0]
+
+
+var cntr= 0;
+var hyperlink = "javascript:initGallery("+ cntr +")"
+
+
+_parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
+
+items.push( {  w:1200 , h:1200 , src: POP.Location} )
+
+
+
+b.Location = b.Location.replace('fd' , 'thumb')
+
+var image = document.createElement('image')
+image.setAttribute('preserveAspectRatio' , 'xMinYMin slice')
+image.setAttribute('width' , '100%')
+image.setAttribute('height' , '100%')
+image.setAttribute('x' , '0')
+image.setAttribute('y' , '0')
+image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
+
+
+_parent.innerHTML = '<style type="text/css">  .article:hover {fill:red;  stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
+
+
+
+
+
+// _parent.innerHTML =image.outerHTML + "</image>"+ _parent.innerHTML
+
+
+for(var c of SubArticlesImages)
+{
+    cntr++;
+
+  var SVG = c.SVG;
+
+
+var parser = new DOMParser();
+var doc = parser.parseFromString(SVG ,  "text/xml");
+var parent  =doc.getElementsByTagName('svg')[0]
+
+// _parent.innerHTML +='<g stroke="green" fill="white" stroke-width="5">'  + parent.innerHTML + "</g>"
+
+items.push( {  w:1200 , h:1200 , src: c.Location} )
+
+var hyperlink = "javascript:initGallery("+ cntr +")"
+
+
+_parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>'
+
+
+
+
+}
+
+
+
+$(_parent).find('path').attr('fill-opacity', '0.1');
+$(_parent).find('path').attr('fill', 'transparent');
+$(_parent).find('path').attr('class', 'article');
+
+
+
+// _parent.innerHTML = "<center>" + _parent.innerHTML + "</center>"
+
+
+document.body.insertAdjacentElement( 'afterbegin' , _parent)
+$('svg').attr('width' , "100%" )   
+$('svg').attr('height' ,   "100%" )  
+// $('svg').find('path')attr("fill", "black");
+
+
+}
+
+
+
+})
+
+
+
+
+
+}
+
+
+parseInfo()
+    // $('img[usemap]').rwdImageMaps();
+
+
+</script>
 
 
 
