@@ -54,7 +54,7 @@ if output=$(identify -format "%[fx:w]x%[fx:h]" pic.jpg); then
     			# 	convert 'Articles/draw_rect'"$2"'.jpg'    -resize 128x128  'ArticlesThumb/draw_rect'"$2"'.jpg'
     			# fi
 
-			PREVIOUS_TMP=$rectangleSubCommand
+			PREVIOUS_TMP+="$rectangleSubCommand"
 
 			echo $CMD
 		else

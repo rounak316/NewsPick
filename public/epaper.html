@@ -64,11 +64,11 @@ image.setAttribute('y' , '0')
 image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
 
 
-_parent.innerHTML = '<style type="text/css">  .article:hover {fill:red;  stroke: white;stroke-width: 4px; } </style>' + _parent.innerHTML
-
-_parent.innerHTML += image.outerHTML + "</image>"
+_parent.innerHTML = '<style type="text/css">  .article:hover {fill:red;  stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
 
 
+
+// _parent.innerHTML =image.outerHTML + "</image>"+ _parent.innerHTML
 
 
 for(var c of SubArticlesImages)
@@ -80,11 +80,11 @@ var parser = new DOMParser();
 var doc = parser.parseFromString(SVG ,  "text/xml");
 var parent  =doc.getElementsByTagName('svg')[0]
 
-_parent.innerHTML +='<g stroke="green" fill="white" stroke-width="5">'  + parent.innerHTML + "</g>"
+// _parent.innerHTML +='<g stroke="green" fill="white" stroke-width="5">'  + parent.innerHTML + "</g>"
 
 
 
-// _parent.innerHTML += parent.innerHTML 
+_parent.innerHTML += parent.innerHTML 
 
 
 }
@@ -92,14 +92,14 @@ _parent.innerHTML +='<g stroke="green" fill="white" stroke-width="5">'  + parent
 
 
 $(_parent).find('g').attr('fill-opacity', '0.1');
-$(_parent).find('g').attr('fill', '');
+$(_parent).find('g').attr('fill', 'transparent');
 $(_parent).find('g').attr('class', 'article');
 
 
 
 document.body.insertAdjacentElement( 'afterbegin' , _parent)
-$('svg').attr('width' , 500   )
-$('svg').attr('height' ,    1000)
+// $('svg').attr('width' , 500   )
+// $('svg').attr('height' ,    1000)
 
 }
 
