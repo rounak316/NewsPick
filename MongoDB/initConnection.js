@@ -74,15 +74,8 @@ var pdf_find_articles = function(res , _id)
 
 var pdf = new PDF();
 if(ObjectId.isValid(_id))
-_id = new ObjectId(_id);
-else
-
 {
-  throw new Error();
-
-}
-
-
+_id = new ObjectId(_id);
 PDF.findOne({_id: _id}  , function(err, articles) {
   if (err || !articles) 
     res.send({})
@@ -90,6 +83,23 @@ else
   // object of all the users
 res.send(articles)
 });
+}
+else
+{
+PDF.findOne({status: 4}  , function(err, articles) {
+  if (err || !articles) 
+    res.send({})
+else
+  // object of all the users
+res.send(articles)
+});
+
+ 
+
+}
+
+
+
 
 
 
