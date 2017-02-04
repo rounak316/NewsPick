@@ -111,6 +111,11 @@ res.send(articles)
 function findEpaperArticles(article_id, succeess , failure )
 {
 
+
+
+if(ObjectId.isValid(article_id))
+{
+
   SubArticle.find({  _id : new ObjectId(article_id)  }  , function(err, articles) {
   if (err || !articles) 
    failure(err)
@@ -119,6 +124,22 @@ else
 succeess(articles)
 });
 
+
+
+}
+
+else
+{
+
+  SubArticle.findOne({ status: 2  }  , function(err, articles) {
+  if (err || !articles) 
+   failure(err)
+else
+  // object of all the users
+succeess([ articles ] )
+});
+
+}
 
 }
 
