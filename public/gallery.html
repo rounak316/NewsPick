@@ -121,13 +121,13 @@ var pswpElement = document.querySelectorAll('.pswp')[0];
 var items = [
     {
         src: 'pic.jpg',
-        w: 994,
-        h: 1558
+        w: 0,
+        h: 0
     },
     {
         src: 'https://placekitten.com/1200/900',
-        w: 1200,
-        h: 900
+        w: 0,
+        h: 0
     }
 ];
 
@@ -150,6 +150,27 @@ closeOnScroll: false,
 
 
 var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+
+gallery.listen('gettingData', function(index, item) {
+        if (item.w < 1 || item.h < 1) { // unknown size
+        var img = new Image(); 
+        img.onload = function() { // will get size after load
+        item.w = this.width; // set image width
+        item.h = this.height; // set image height
+           gallery.invalidateCurrItems(); // reinit Items
+           gallery.updateSize(true); // reinit Items
+
+           console.log(item.w)
+
+
+
+        }
+    img.src = item.src; // let's download image
+    }
+});
+
+
 gallery.init();
 }
     </script>
@@ -188,7 +209,7 @@ var hyperlink = "javascript:initGallery("+ cntr +")"
 
 _parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
 
-items.push( {  w:1200 , h:1200 , src: POP.Location} )
+items.push( {  w:0 , h:0 , src: POP.Location} )
 
 
 
