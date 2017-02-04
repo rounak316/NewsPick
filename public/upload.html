@@ -64,16 +64,47 @@ height: 00px;
     #left-top{
     width: 100%;
     height: 30%;
-    height: 100%;
-    
   }
 
- #left-bottom{
+     #left-top > .container{
+    width: 100%;
+    height: 100%;
+
+    display: inline;
+  }
+
+ .left-bottom{
   	width: 100%;
-  	height: calc(70%);
+  	max-height: calc(70% - 50px);
     /*overflow-y: scroll;*/
 
   }
+
+
+#fileHolder
+{
+
+/*background-color: #ffffff;*/
+
+
+overflow-y: auto;
+
+}
+
+#progressModel
+{
+  padding: 10px;
+  margin-left: 35px;
+ 
+  margin-right: 35px;
+ 
+  margin-bottom: 5px;
+ 
+  margin-top: 5px;
+ 
+  background-color: #ffffff;
+}
+
 
   #left-nav{
   	width: 100%;
@@ -94,6 +125,13 @@ height: 00px;
   height:100%;
   background-color: #000000;
   text-align: center;
+}
+
+#uploadPanel
+{
+
+  /*height: 100%;*/
+  /*margin: 10px;*/
 }
 
 
@@ -209,80 +247,45 @@ height: 50px;
 
 </div>
  <div id="left-top">
-<div >
 
-<div class="container" id="#fileUploader">
-
+<div class="container" id="fileUploader">
 
  <input id="fileUpload" type="file" multiple class="model-dummy" >
 
-<div class="card" >
+<div class="card" id="uploadPanel">
 
   <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary" id="virtual_fileUpload">Go somewhere</a>
+    <h4 class="card-title">Upload PDF</h4>
+    <p class="card-text">Click below, and choose PDF file(s) to upload.</p>
+    <a href="#" class="btn btn-primary" id="virtual_fileUpload">Upload</a>
   </div>
 
 <br>
 
+</div>
 
 
 
 
 </div>
 
-
-
-<div id="fileHolder" class="list-group">
-
-
-
-
 </div>
 
 
-</div>
-</div>
 
 
-</div>
 
-<div id="left-bottom"  >
+<ul id="fileHolder"  class="list-group left-bottom" >
   
 
 
-<ul class="list-group" style="width: 100%;height: 300px;overflow-y: scroll;" >
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-    <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-    <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-    <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-    <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
 </ul>
 
 
 
-</div>
+
+
+
 
   </div>   
 
@@ -416,13 +419,22 @@ height: 50px;
 
 <div id="progressModel" class="model-dummy">
 
- <h4 class="card-title">Card title</h4>
+
+<div class="card-block">
+  
+
+     <p class="card-text">Card title</p>
 
  
   <div class="progress">
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 
 </div>
+
+
+  </div>
+
+
 
 </div>
 

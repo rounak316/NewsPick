@@ -60,6 +60,19 @@ MongoDB.pdf_find_by_folder(res , folder)
 })
 
 
+app.get('/checkPDFStatus/:id', function (req, res) {
+
+  var id = req.params.id
+
+
+
+MongoDB.pdf_find_by_id(id , function(success) {res.send(success) }  , function(){  res.send({ status: -1 }) })
+
+
+
+})
+
+
 
 app.get('/readEpaper/:articleId', function (req, res) {
 
@@ -176,12 +189,12 @@ var status =	response.statusCode || error
 if(status==200)
 {
 var output =params
-output.status ="success" 
 
 
-MongoDB.pdf_save(req.body);
 
-res.send(output)
+MongoDB.pdf_save(req.body  , function() { output.status ="success" ; res.send(output)} , function() {output.status ="failure" ; res.send(output) } );
+
+return
 
 }
 else

@@ -25,7 +25,7 @@ var SubArticle =  mongoose.model('ARTICLES', SubArticleSchema);
 
 
 
-var pdf_save = function(param)
+var pdf_save = function(param , success , failure)
 {
 
 var pdf = new PDF(param);
@@ -36,8 +36,10 @@ var pdf = new PDF(param);
 pdf.save(function (err) {
   if (err) {
     console.log(err);
+    failure();
   } else {
     console.log('meow');
+    success();
   }
 });
 
@@ -61,6 +63,38 @@ else
 res.send(users)
 });
 
+
+
+
+}
+
+
+var pdf_find_by_id = function(id , success , failure)
+{
+
+
+
+var pdf = new PDF();
+if(ObjectId.isValid(id))
+{
+
+PDF.findOne({_id:id} , '-Articles', function(err, pdf) {
+  if (err) 
+   failure();
+else
+  // object of all the users
+success(pdf)
+});
+
+
+}
+
+else
+{
+
+failure();
+
+}
 
 
 
@@ -298,3 +332,5 @@ exports.pdf_find_articles = pdf_find_articles
 exports.splitArticles = splitArticles
 
 exports.findEpaperArticles = findEpaperArticles
+
+exports.pdf_find_by_id = pdf_find_by_id;

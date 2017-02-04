@@ -41,6 +41,13 @@ success_cb();
 }
 
 
+function removeElement(element)
+{
+
+ element.fadeOut( function() { $(this).remove(); });
+}
+
+
 function addPhoto(albumName , file , element , folder) {
 
    var progessbar =  $(element).find('.progress-bar')[0];
@@ -68,7 +75,7 @@ progessbar.style.width="0%"
 
 data.Folder = folder;
 console.log(data)
-sendFlagUploadPDF(data , function(){ getPDFS(  getDate() ) ;/*Success Callback*/}  , function(){});
+sendFlagUploadPDF(data , function(){ removeElement( element ); getPDFS(  getDate() ) ;/*Success Callback*/}  , function(){});
   
 
    
@@ -134,6 +141,54 @@ setDefaultDateToToday();
 }
 
 
+function checkForPDFStatus( status , element  , pdf)
+{
+
+
+
+if(status != 4 || status != -1)
+setTimeout(  function(){
+
+  $.ajax({
+    url: '/checkPDFStatus/' + pdf._id ,
+    type: 'GET',
+    success: function(data){ 
+
+if( data.status ==4 )
+{
+
+console.log('checked');
+}
+else
+{
+console.log('checking');
+checkForPDFStatus( status , element  , pdf)
+return
+
+}
+
+    },
+
+      error: function(error) {
+
+console.log('checking error');
+checkForPDFStatus( status , element  , pdf)
+return
+
+       }
+
+
+
+
+
+});
+
+
+}  ,2000)
+
+}
+
+
 function getPDFS(Folder)
 {
 
@@ -166,7 +221,7 @@ child.find('#edit')[0].setAttribute('href', URL_REDIRECT)
 
 child.appendTo('#data-pdf');
 
-
+checkForPDFStatus( status, child , pdf )
 
 }
 
@@ -245,6 +300,8 @@ child[0].removeAttribute('class');
 	child.appendTo($('#fileHolder')[0])
 
 	console.log(File);
+
+$(child).find('.card-text')[0].innerHTML= File.name
 
     addPhoto( 'PDF/' + date_tmp + "/"+ Date.now() + ".pdf" ,  File , child  , date_tmp)
 

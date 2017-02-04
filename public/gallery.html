@@ -39,10 +39,50 @@ html, body { background: #000000 ; margin:0; padding:0; overflow:hidden; }
 svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 
 
+#top
+{
+
+width:100%;
+height: 80%;
+
+}
+
+#bottom
+{
+
+width:100%;
+height: 20%;
+
+}
+
+.containment {
+    /*transform: rotate(-90deg);*/
+  /*transform-origin:80% 10%;*/
+    background: white;
+    width: auto;
+    height: calc(100% - 00px);
+    overflow-x: scroll;
+overflow-y: hidden;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px black;
+   white-space: nowrap;
+
+    }
+
+.unit {
+ 
+    height: 150px;
+  width: 200px;
+  /*margin: 5px 0 5px;*/
+  display: inline-block;
+  /*box-shadow: 0 0 10px #222;*/
+    }
+
 </style>
 
   <body>
-
+<div  id="top">
     
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -112,6 +152,25 @@ svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 </div>
 
 
+
+</div>
+
+
+<div  id="bottom">
+    
+<div class="containment">
+  
+    <img src="http://lorempixel.com/150/200/animals/1" class="unit"/>
+  <img src="http://lorempixel.com/150/200/nature/1" class="unit"/>
+  <img src="http://lorempixel.com/150/200/nature/2" class="unit"/>
+  <img src="http://lorempixel.com/150/200/animals/4" class="unit"/>
+  <img src="http://lorempixel.com/150/200/nature/3" class="unit"/>
+  <img src="http://lorempixel.com/150/200/animals/7" class="unit"/>
+  
+</div>
+
+
+</div>
     </body>
     <script type="text/javascript">
 
@@ -173,10 +232,13 @@ gallery.init();
 
 <script type="text/javascript">
 
-console.log(items)
+
 
 function parseInfo()
 {
+
+    
+items = []
   
 $.get('/readEpaper/getTopOne' , function(a){
 
@@ -263,9 +325,12 @@ $(_parent).find('path').attr('class', 'article');
 // _parent.innerHTML = "<center>" + _parent.innerHTML + "</center>"
 
 
-document.body.insertAdjacentElement( 'afterbegin' , _parent)
+document.getElementById('top').insertAdjacentElement( 'afterbegin' , _parent);
+
+
+
 $('svg').attr('width' , "100%" )   
-$('svg').attr('height' ,   "100%" )  
+$('svg').attr('height' ,   "80%" )  
 // $('svg').find('path')attr("fill", "black");
 
 
