@@ -19,7 +19,7 @@ function JobToConvertPDF( success , failure )
 
 
 
-var query = SubArticleModel.findOneAndUpdate({ status:0 } , {$set:{status:1}}, {new: true}  );
+var query = SubArticleModel.findOne({ status:0 }  );
 
 
 query.exec(function (err, _article) {
@@ -30,15 +30,16 @@ return;
   }
 else
 {
-
+// console.log('status 0 -> 1')
   if(_article)
   {
-  
+  console.log('article Mila')
 
     DownloadArticle(_article , "pic.jpg", _article.Location , success , failure)
   }
   else
   {
+      // console.log('article Mila he nhn ' + _article)
     // console.log('Nothing Found')
     StartJob(success , failure );
 

@@ -19,12 +19,12 @@ mkdir -p "$1"thumb
 ClearShit(){
 	
 rm -rf $1 > /dev/null
-echoerr "Conversion Failed" >&2
+echoerr "Conversion Failed"
 
 }
 
 BurpOutput(){
-
+echo "Burping"
 printf $2
 for entry in "$1"*
 do
@@ -55,7 +55,7 @@ else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r100 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r30 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"sd/ "SD"
 printf '\n'
 else
@@ -64,14 +64,14 @@ fi
 
 
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r100 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r20 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"hd/ "HD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r20  -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r7  -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"thumb/ "THUMB"
 else
 ClearShit $ImageOutput

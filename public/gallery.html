@@ -163,7 +163,7 @@ console.log(items)
 function parseInfo()
 {
   
-$.get('/readEpaper/588c4760de7ac604b30d7271' , function(a){
+$.get('/readEpaper/588c7c5dcc5c8c6906006efe' , function(a){
 
 
 
@@ -192,7 +192,7 @@ items.push( {  w:1200 , h:1200 , src: POP.Location} )
 
 
 
-b.Location = b.Location.replace('fd' , 'thumb')
+b.Location = b.Location.replace('/fd' , '/thumb')
 
 var image = document.createElement('image')
 image.setAttribute('preserveAspectRatio' , 'xMinYMin slice')

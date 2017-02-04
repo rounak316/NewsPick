@@ -381,6 +381,7 @@ $('#image').cropper('replace' , image);
 function blurRect(image , include)
 {
 
+
 var CropBoxData=  $(image).cropper('getData');
 if(include == true)
 {
@@ -402,6 +403,9 @@ ctx.beginPath();
 
 var MissedExcluded = []
 
+
+var _SpaceRect = SpaceRect.slice( SpaceRect.length - 1  , SpaceRect.length )
+console.log(_SpaceRect)
 
 for(i of SpaceRect)
 {
@@ -503,7 +507,7 @@ for(i of SpaceRect)
 
   CropBoxData = i.coordinates;
 
-  var scale_matrix = 3;
+  var scale_matrix = 10;
 
   var __x1 = Math.floor(CropBoxData.x*scale_matrix) ;
 

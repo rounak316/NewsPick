@@ -182,15 +182,18 @@ var sub_article = new SubArticle(save_sub_article);
 sub_article.save(function (err) {
   if (err) {
     console.log('error' , err);
+    res.send('{Error}')
   } else {
     console.log('Saved SubArticle');
+    
+    res.send(sub_article)
   }
 });
 
 
 
 
-res.send(Article)
+
 return
 }
 

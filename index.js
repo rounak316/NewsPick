@@ -11,7 +11,7 @@ var request = require('request');
 
 
 //Job
-var JobPDF = require('./job_pdf_converter').StartJob
+var JobPDF = require('./job_pdf_converter')
 
 var Article_cutter_job = require('./article_cutter_job').StartJob
 

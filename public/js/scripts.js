@@ -240,7 +240,7 @@ for(File of Files)
 
 child[0].removeAttribute('class');
 
-child[0].setAttribute('class','list-group-item');
+// child[0].setAttribute('class','list-group-item');
 
 	child.appendTo($('#fileHolder')[0])
 

@@ -1,6 +1,6 @@
 // var MongoDB = require('./MongoDB/initConnection.js')
 var PDFSchema = require('./MongoDB/PDFSchema.js').PDF
-// var MongoDB = require('./MongoDB/initConnection.js')
+var MongoDB = require('./MongoDB/initConnection.js')
 var ARTICLESchema = require('./MongoDB/ARTICLESchema.js').ArticleSchema
 var mongoose = require('mongoose')
 
@@ -31,12 +31,13 @@ else
   if(_pdf)
   {
   
-
+console.log('Found Sometging')
   	ShellJob(_pdf ,StartJob);
   }
   else
   {
-  	// console.log('Nothing Found')
+
+  	console.log('Nothing Found')
   	StartJob();
 
 
@@ -87,7 +88,7 @@ awsuploadAll(_pdf , success , failure  , Articles , 'ShellImages/');
 
 }
 
-require
+
 
 function success(shell_output)
 {
@@ -203,7 +204,7 @@ callback()
 function ShellScript()
 {
 console.log('issuing' + param.Folder)
-ShellHandler('sh PdfToImage.sh in.pdf ' + param.Folder+'/'+param._id, success , failure)
+ShellHandler('sh PdfToImage.sh in.pdf "' + param.Folder+'/'+param._id + '"', success , failure)
 }
 
 
@@ -227,5 +228,5 @@ setTimeout( JobToConvertPDF , 1000);
 StartJob();
 
 
-exports.StartJob = StartJob
+
 
