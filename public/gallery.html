@@ -118,18 +118,7 @@ svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 var pswpElement = document.querySelectorAll('.pswp')[0];
 
 // build items array
-var items = [
-    {
-        src: 'pic.jpg',
-        w: 0,
-        h: 0
-    },
-    {
-        src: 'https://placekitten.com/1200/900',
-        w: 0,
-        h: 0
-    }
-];
+
 
 items = []
 // define options (if needed)
@@ -153,6 +142,9 @@ var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options)
 
 
 gallery.listen('gettingData', function(index, item) {
+
+    console.log(index)
+
         if (item.w < 1 || item.h < 1) { // unknown size
         var img = new Image(); 
         img.onload = function() { // will get size after load
@@ -162,6 +154,8 @@ gallery.listen('gettingData', function(index, item) {
            gallery.updateSize(true); // reinit Items
 
            console.log(item.w)
+           console.log(item.h)
+
 
 
 
@@ -246,7 +240,7 @@ var parent  =doc.getElementsByTagName('svg')[0]
 
 // _parent.innerHTML +='<g stroke="green" fill="white" stroke-width="5">'  + parent.innerHTML + "</g>"
 
-items.push( {  w:1200 , h:1200 , src: c.Location} )
+items.push( {  w:0 , h:0 , src: c.Location} )
 
 var hyperlink = "javascript:initGallery("+ cntr +")"
 
