@@ -74,24 +74,30 @@ postSplitterData(body)
 function CarouselInit(img_ar)
 {
 
+var first_par = null
+
 for(var img of img_ar)
 {
 var par = document.createElement('div')
-par.setAttribute('class' , 'carousel-item active slide')
+
+if(!first_par)
+first_par = par;
 var _img = document.createElement('img')
 _img.setAttribute('class' , 'd-block img-fluid slide')
 _img.setAttribute('src',"https://prakhargyan.s3.ap-south-1.amazonaws.com/" + img.Image)
 par.append(_img)
 
-
-par.setAttribute('onclick' ,'alert(123)'  )
-
+console.log(_img)
+// par.setAttribute('onclick' ,'alert(123)'  )
+console.log(par)
+par.setAttribute('class' , 'carousel-item slide')
+$('.carousel-inner.slide').append(par)
 
 }
 
-console.log(par)
+first_par.setAttribute('class' , 'carousel-item active slide')
 
-$('.carousel-inner.slide').append(par)
+
 }
 
 

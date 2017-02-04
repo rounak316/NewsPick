@@ -16,7 +16,10 @@ max-width: 100%;
 
 }*/
 
-
+.addedData
+{
+  margin: 15px;
+}
 
 
 body, html {
@@ -51,7 +54,7 @@ height: 00px;
   	width: 100%;
   	height: calc(70% - 0px);
     height: 100%;
-  	overflow-y: scroll;
+  	overflow-y: auto;
   }
 /*
   #right-bottom{
@@ -134,7 +137,10 @@ overflow-y: auto;
   /*margin: 10px;*/
 }
 
-
+#date{
+    border: none !important;
+    border-color: transparent !important;
+}
 
  html, body {
         height: 100%;
@@ -228,18 +234,22 @@ height: 50px;
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="/gallery.html">ePaper</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+    
+        <li class="nav-item">
+        <a class="nav-link" href="/upload.html">Admin <span class="sr-only">(current)</span>  </a>
       </li>
     </ul>
   
      
-      <button id="splitIt" class="btn btn-outline-success my-2 my-sm-0" type="submit">Publish</button>
+     <!-- <p  class="btn btn-outline-success my-2 my-sm-0"> Date</p> -->
+
+<input id="date"  type="date" class="btn btn-outline-success my-2 my-sm-0">
+
     
   </div>
 </nav>
@@ -250,7 +260,7 @@ height: 50px;
 
 <div class="container" id="fileUploader">
 
- <input id="fileUpload" type="file" multiple class="model-dummy" >
+ <input accept="application/pdf" id="fileUpload" type="file" multiple class="model-dummy" >
 
 <div class="card" id="uploadPanel">
 
@@ -309,9 +319,9 @@ height: 50px;
   <div class="col-lg-6">
     <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">Go!</button>
+        <!-- <button class="btn btn-secondary" type="button">Go!</button> -->
       </span>
-      <input id="date" type="date" >
+    
     </div>
   </div>
 </div>
@@ -387,9 +397,18 @@ height: 50px;
     
 
   <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h4 class="card-title">Oopzz</h4>
+    <p class="card-text">Something went wrong. Failed To convert the PDF.</p>
     <a href="#" id="edit" class="btn btn-primary">Ingestion Started</a>
+
+<br>
+<a><span class="badge badge-default">Retry Conversion</span> </a>
+<span class="badge badge-primary">Primary</span>
+<span class="badge badge-success">Success</span>
+<span class="badge badge-info">Info</span>
+<span class="badge badge-warning">Warning</span>
+<a href="javascript:alert(213)"><span class="badge badge-danger">Remove</span> </a>
+
   </div>
 
 

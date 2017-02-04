@@ -146,7 +146,7 @@ function checkForPDFStatus( status , element  , pdf)
 
 
 
-if(status != 4 || status != -1)
+if(status != 4 || status != -1 || status != 3)
 setTimeout(  function(){
 
   $.ajax({
@@ -154,7 +154,7 @@ setTimeout(  function(){
     type: 'GET',
     success: function(data){ 
 
-if( data.status ==4 )
+if( data.status ==4 || data.status ==3)
 {
 
 console.log('checked');
