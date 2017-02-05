@@ -94,7 +94,7 @@ app.get('/getArticles/:id', function (req, res) {
 
 
 
-MongoDB.pdf_find_articles(res , _id)
+MongoDB.pdf_find_articles( _id  , function(data){ res.send(data) }, function(){res.send({})} )
 
 
 

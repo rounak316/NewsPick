@@ -101,7 +101,7 @@ failure();
 }
 
 
-var pdf_find_articles = function(res , _id)
+var pdf_find_articles = function(res , _id , success , error)
 {
 
 
@@ -112,20 +112,25 @@ if(ObjectId.isValid(_id))
 _id = new ObjectId(_id);
 PDF.findOne({_id: _id}  , function(err, articles) {
   if (err || !articles) 
-    res.send({})
+    // res.send({})
+error()
+
 else
   // object of all the users
-res.send(articles)
+// res.send(articles)
+success(articles)
 });
 }
 else
 {
 PDF.findOne({status: 4}  , function(err, articles) {
   if (err || !articles) 
-    res.send({})
+    // res.send({})
+  error()
 else
   // object of all the users
-res.send(articles)
+// res.send(articles)
+succeess(articles)
 });
 
  
@@ -150,7 +155,7 @@ function findEpaperArticles(article_id, succeess , failure )
 if(ObjectId.isValid(article_id))
 {
 
-  SubArticle.find({  _id : new ObjectId(article_id)  }  , function(err, articles) {
+  SubArticle.find({  pdf_id : new ObjectId(article_id)  }  , function(err, articles) {
   if (err || !articles) 
    failure(err)
 else

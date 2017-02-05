@@ -43,7 +43,7 @@ svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 {
 
 width:100%;
-height: 80%;
+height: 85%;
 
 }
 
@@ -51,7 +51,7 @@ height: 80%;
 {
 
 width:100%;
-height: 20%;
+height: 15%;
 
 }
 
@@ -72,8 +72,8 @@ overflow-y: hidden;
 
 .unit {
  
-    height: 150px;
-  width: 200px;
+    height: 100%;
+  /*width: 200px;*/
   /*margin: 5px 0 5px;*/
   display: inline-block;
   /*box-shadow: 0 0 10px #222;*/
@@ -234,13 +234,15 @@ gallery.init();
 
 
 
-function parseInfo()
+function parseInfo(data)
 {
 
     
 items = []
   
-$.get('/readEpaper/getTopOne' , function(a){
+
+
+$.get('/readEpaper/' + data[0]._id , function(a){
 
 
 
@@ -280,7 +282,7 @@ image.setAttribute('y' , '0')
 image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
 
 
-_parent.innerHTML = '<style type="text/css">  .article:hover {fill:red;  stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
+_parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:transparent;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
 
 
 
@@ -330,7 +332,7 @@ document.getElementById('top').insertAdjacentElement( 'afterbegin' , _parent);
 
 
 $('svg').attr('width' , "100%" )   
-$('svg').attr('height' ,   "80%" )  
+$('svg').attr('height' ,   "85%" )  
 // $('svg').find('path')attr("fill", "black");
 
 
@@ -347,9 +349,21 @@ $('svg').attr('height' ,   "80%" )
 }
 
 
-parseInfo()
+// parseInfo()
     // $('img[usemap]').rwdImageMaps();
 
+function getPDFByDate(date)
+{
+
+$.get('/getPdfStream/' + date, function(success){
+
+parseInfo(success)
+
+})
+
+}
+
+getPDFByDate('20170205')
 
 </script>
 
