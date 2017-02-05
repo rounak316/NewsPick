@@ -130,7 +130,7 @@ PDF.findOne({status: 4}  , function(err, articles) {
 else
   // object of all the users
 // res.send(articles)
-succeess(articles)
+success(articles)
 });
 
  
