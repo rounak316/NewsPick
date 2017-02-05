@@ -39,11 +39,14 @@ html, body { background: #000000 ; margin:0; padding:0; overflow:hidden; }
 svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 
 
+
+
+
 #top
 {
 
 width:100%;
-height: 85%;
+height: 80%;
 
 }
 
@@ -51,7 +54,7 @@ height: 85%;
 {
 
 width:100%;
-height: 15%;
+height: calc(25% - 50px);
 
 }
 
@@ -79,9 +82,52 @@ overflow-y: hidden;
   /*box-shadow: 0 0 10px #222;*/
     }
 
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+  max-height: 50px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.topnav li a:hover {background-color: #555;}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {display: none;}
+
+
 </style>
 
   <body>
+  <ul class="topnav" id="myTopnav">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  <li class="icon">
+    <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+  </li>
+</ul>
+
+
+
 <div  id="top">
     
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -326,7 +372,7 @@ document.getElementById('top').insertAdjacentElement( 'afterbegin' , _parent);
 
 
 $('svg').attr('width' , "100%" )   
-$('svg').attr('height' ,   "85%" )  
+$('svg').attr('height' ,   "80%" )  
 // $('svg').find('path')attr("fill", "black");
 
 
@@ -387,7 +433,16 @@ cntr = cntr + 1;
 
 }
 
-getPDFByDate('20170205')
+function getCurrentFolder()
+{
+var datae = new Date()
+return ( "0000" + datae.getFullYear() ).slice(-4) + ( "0000" + (datae.getMonth() + 1) ).slice(-2)  + ( "0000" + datae.getDate() ).slice(-2) ;
+
+}
+
+
+
+getPDFByDate(getCurrentFolder())
 // bottomSlider('baba')
 </script>
 
