@@ -22,17 +22,31 @@ var ArticleConverter = require('./ArticleConverter').StartJob
 //
 
 
-
+var basicAuth = require('express-basic-auth');
 
 
 // app.set('view engine', 'jade');
+app.use('/upload.html' , basicAuth({
+    users: { 'nandu': 'prakhargyan' , 'rajesh': 'prakhargyan' }
+    ,
+    challenge: true
+}));
 
-app.use(express.static(__dirname + '/public'));
+app.use('/edit.html' , basicAuth({
+    users: { 'rajesh': 'prakhargyan' }
+    ,
+    challenge: true
+}));
+
+
+app.use('/' , express.static(__dirname + '/public'));
 
 
 
 
 
+
+app.use('/' , express.static(__dirname + '/public'));
 
 
 app.use(bodyParser.urlencoded());

@@ -215,7 +215,7 @@ console.log(child)
 
 child[0].removeAttribute('class');
 child[0].setAttribute('class' , 'addedData');
-var URL_REDIRECT = '/?article_id=' + pdf._id;
+var URL_REDIRECT = '/edit.html?article_id=' + pdf._id;
 
 child.find('#edit')[0].setAttribute('href', URL_REDIRECT)
 
