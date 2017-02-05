@@ -101,7 +101,7 @@ failure();
 }
 
 
-var pdf_find_articles = function(res , _id , success , error)
+var pdf_find_articles = function( _id , success , error)
 {
 
 
