@@ -48,14 +48,14 @@ fi
 
 
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r300   -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r250   -o "$ImageOutput"fd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"fd/ "FD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r30 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r25 -o "$ImageOutput"sd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"sd/ "SD"
 printf '\n'
 else
@@ -64,14 +64,14 @@ fi
 
 
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r20 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r50 -o "$ImageOutput"hd/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"hd/ "HD"
 printf '\n'
 else
 ClearShit $ImageOutput
 fi
 
-if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r7  -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
+if gs -sDEVICE=jpeg -dTextAlphaBits=4 -r10  -o "$ImageOutput"thumb/tmp%03d.jpg $InputDirectory > /dev/null;then
 BurpOutput "$ImageOutput"thumb/ "THUMB"
 else
 ClearShit $ImageOutput

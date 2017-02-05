@@ -160,13 +160,7 @@ overflow-y: hidden;
     
 <div class="containment">
   
-    <img src="http://lorempixel.com/150/200/animals/1" class="unit"/>
-  <img src="http://lorempixel.com/150/200/nature/1" class="unit"/>
-  <img src="http://lorempixel.com/150/200/nature/2" class="unit"/>
-  <img src="http://lorempixel.com/150/200/animals/4" class="unit"/>
-  <img src="http://lorempixel.com/150/200/nature/3" class="unit"/>
-  <img src="http://lorempixel.com/150/200/animals/7" class="unit"/>
-  
+
 </div>
 
 
@@ -234,15 +228,15 @@ gallery.init();
 
 
 
-function parseInfo(data)
+function parseInfo( index)
 {
-
-    
+$('svg').remove()
+    index = index || 0
 items = []
   
 
 
-$.get('/readEpaper/' + data[1]._id , function(a){
+$.get('/readEpaper/' + Data[index]._id , function(a){
 
 
 
@@ -271,7 +265,7 @@ items.push( {  w:0 , h:0 , src: POP.Location} )
 
 
 
-b.Location = b.Location.replace('/fd' , '/thumb')
+b.Location = b.Location.replace('/fd' , '/hd')
 
 var image = document.createElement('image')
 image.setAttribute('preserveAspectRatio' , 'xMinYMin slice')
@@ -352,19 +346,49 @@ $('svg').attr('height' ,   "85%" )
 // parseInfo()
     // $('img[usemap]').rwdImageMaps();
 
+var Data = []
+
 function getPDFByDate(date)
 {
 
 $.get('/getConvertedPdf/' + date, function(success){
 
-parseInfo(success)
+bottomSlider(success)
+Data = success
+parseInfo()
 
 })
 
 }
 
-getPDFByDate('20170205')
 
+function bottomSlider(data)
+{
+
+  var cntr = 0
+for(var _d of data)
+{
+
+for(var __d of _d.Articles.THUMB.splice(0,1))
+{
+
+  var img = document.createElement('img');
+  img.setAttribute('class' , 'unit')
+  img.src ="https://prakhargyan.s3.ap-south-1.amazonaws.com/" + __d.Image
+img.setAttribute('onclick' , "parseInfo(" +cntr +  ")" )
+
+$('.containment').append( img )
+
+
+}
+cntr = cntr + 1;
+}
+
+
+}
+
+getPDFByDate('20170205')
+// bottomSlider('baba')
 </script>
 
 
