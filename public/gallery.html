@@ -242,7 +242,7 @@ items = []
   
 
 
-$.get('/readEpaper/' + data[0]._id , function(a){
+$.get('/readEpaper/' + data[1]._id , function(a){
 
 
 
@@ -355,7 +355,7 @@ $('svg').attr('height' ,   "85%" )
 function getPDFByDate(date)
 {
 
-$.get('/getPdfStream/' + date, function(success){
+$.get('/getConvertedPdf/' + date, function(success){
 
 parseInfo(success)
 

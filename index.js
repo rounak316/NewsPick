@@ -59,6 +59,18 @@ MongoDB.pdf_find_by_folder(res , folder)
 
 })
 
+app.get('/getConvertedPdf/:folder', function (req, res) {
+
+  var folder = req.params.folder
+
+
+
+MongoDB.pdf_find_converted_by_folder(folder , function(success) {res.send(success) }  , function(){  res.send({ status: -1 }) })
+
+
+
+})
+
 
 app.get('/checkPDFStatus/:id', function (req, res) {
 

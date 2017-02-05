@@ -69,6 +69,41 @@ res.send(users)
 }
 
 
+
+
+
+var pdf_find_converted_by_folder = function(Folder , success , failure)
+{
+
+
+
+var pdf = new PDF();
+if(Folder)
+{
+
+PDF.find({Folder:Folder , status:4} , '', function(err, pdf) {
+  if (err) 
+   failure();
+else
+  // object of all the users
+success(pdf)
+});
+
+
+}
+
+else
+{
+
+failure();
+
+}
+
+
+
+}
+
+
 var pdf_find_by_id = function(id , success , failure)
 {
 
@@ -339,3 +374,5 @@ exports.splitArticles = splitArticles
 exports.findEpaperArticles = findEpaperArticles
 
 exports.pdf_find_by_id = pdf_find_by_id;
+
+exports.pdf_find_converted_by_folder = pdf_find_converted_by_folder;
