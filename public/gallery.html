@@ -247,7 +247,7 @@ function parseInfo( index)
     index = index || 0
 items = []
   
-
+$('svg').fadeOut()
 
 $.get('/readEpaper/' + Data[index]._id , function(a){
 
@@ -298,6 +298,7 @@ _parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transpar
 // _parent.innerHTML =image.outerHTML + "</image>"+ _parent.innerHTML
 
 
+$('svg').remove()
 for(var c of SubArticlesImages)
 {
     cntr++;
@@ -315,7 +316,8 @@ items.push( {  w:0 , h:0 , src: c.Location} )
 
 var hyperlink = "javascript:initGallery("+ cntr +")"
 
-$('svg').remove()
+
+
 _parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>'
 
 
@@ -336,7 +338,7 @@ $(_parent).find('path').attr('class', 'article');
 
 document.getElementById('top').insertAdjacentElement( 'afterbegin' , _parent);
 
-
+$('svg').hide().fadeIn()
 
 $('svg').attr('width' , "100%" )   
 $('svg').attr('height' ,   "80%" )  
