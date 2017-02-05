@@ -54,14 +54,14 @@ height: 80%;
 {
 
 width:100%;
-height: calc(25% - 50px);
+height: calc(20% );
 
 }
 
 .containment {
     /*transform: rotate(-90deg);*/
   /*transform-origin:80% 10%;*/
-    background: white;
+    /*background: white;*/
     width: auto;
     height: calc(100% - 00px);
     overflow-x: scroll;
@@ -77,54 +77,21 @@ overflow-y: hidden;
  
     height: 100%;
   /*width: 200px;*/
-  /*margin: 5px 0 5px;*/
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  /*margin: 15px;*/
   display: inline-block;
   /*box-shadow: 0 0 10px #222;*/
     }
 
-/* Remove margins and padding from the list, and add a black background color */
-ul.topnav {
-  max-height: 50px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-/* Float the list items side by side */
-ul.topnav li {float: left;}
-
-/* Style the links inside the list items */
-ul.topnav li a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-/* Change background color of links on hover */
-ul.topnav li a:hover {background-color: #555;}
-
-/* Hide the list item that contains the link that should open and close the topnav on small screens */
-ul.topnav li.icon {display: none;}
 
 
 </style>
 
   <body>
-  <ul class="topnav" id="myTopnav">
-  <li><a href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
-  <li class="icon">
-    <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
-  </li>
-</ul>
+
 
 
 
@@ -276,7 +243,7 @@ gallery.init();
 
 function parseInfo( index)
 {
-$('svg').remove()
+
     index = index || 0
 items = []
   
@@ -348,7 +315,7 @@ items.push( {  w:0 , h:0 , src: c.Location} )
 
 var hyperlink = "javascript:initGallery("+ cntr +")"
 
-
+$('svg').remove()
 _parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>'
 
 
