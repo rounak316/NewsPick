@@ -154,6 +154,28 @@ setTimeout(  function(){
     type: 'GET',
     success: function(data){ 
 
+if(data.status != status)
+{
+
+
+var child =  $("#model" + data.status).clone();
+console.log(child)
+
+child[0].removeAttribute('class');
+child[0].setAttribute('class' , 'addedData');
+var URL_REDIRECT = '/edit.html?article_id=' + data._id;
+
+child.find('#edit')[0].setAttribute('href', URL_REDIRECT)
+
+
+
+element.replaceWith(child)
+
+
+}
+
+
+
 if( data.status ==4 || data.status ==3)
 {
 

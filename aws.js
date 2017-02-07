@@ -86,17 +86,18 @@ function _upload(_pdf , inpFilePath , outCloudPath  ,success, failure , Articles
 
 if(err)
 {
-    failure();
+    
   console.log('S3 Upload Error : ', err);
+  return failure();;
 }
-else
-{
 
-     console.log('S3 Upload Success : ',data);
+
+     // console.log('S3 Upload Success : ',data);
+     console.log('uplad completed')
      uploadForLoop(_pdf , success , failure , Articles , Files)
 
 
-}
+
 
 
 
@@ -116,12 +117,13 @@ function uploadForLoop(_pdf , success , fail , Articles , Files)
 var File = Files.pop();
 if(File)
 {
-_upload(_pdf , File , File, success , fail ,Articles  , Files)
+  console.log('upload Triggered')
+_upload(_pdf , File , File, success , fail ,Articles  , Files);
+
 }
 else
 {
-console.log(';;;')
-console.log(Articles)
+console.log('All Are Uploaded')
 
 
 // var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles ,  ArticlesHD : Articles["HD"] ,  ArticlesFD:Articles["FD"]  ,  ArticlesSD:Articles["SD"]   ,  ArticlesTHUMB:Articles["THUMB"] } }, {new: true}  );
@@ -129,7 +131,6 @@ console.log(Articles)
 var query = PDFModel.findOneAndUpdate({_id:_pdf._id}, {$set:{Articles:Articles } }, {new: true}  );
 
 
-console.log(_pdf)
 
 // execute the query at a later time
 query.exec(function (err, _pdf) {
@@ -166,11 +167,12 @@ function uploadAll(_pdf , success , failure, Articles , _dir)
 
     var dir = _dir + _pdf.Folder+'/'+_pdf._id ;
 
-ListFiles( function(Files){   ;successAfterFileDirRead( Files );  } ,  dir);
-
+var FILES = ListFiles(  dir);
+successAfterFileDirRead(FILES)
 
 function successAfterFileDirRead(Files)
 {
+  console.log('successAfterFileDirRead' , Files)
  uploadForLoop( _pdf ,   success , failure,Articles , Files );
 
 }
@@ -186,8 +188,8 @@ function uploadAllArticles(_article , success , failure , _dir)
     var dir = dir='Articles/';
 
 
-ListFiles( function(Files){  successAfterFileDirRead( Files );  } ,  dir);
-
+var FILES = ListFiles( dir ) ;
+successAfterFileDirRead(FILES)
 
 function successAfterFileDirRead(Files)
 {

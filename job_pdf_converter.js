@@ -33,12 +33,14 @@ else
   
 console.log('Found Sometging')
   	ShellJob(_pdf ,StartJob);
+    return
   }
   else
   {
 
   	console.log('Nothing Found')
   	StartJob();
+    return
 
 
   }
@@ -57,15 +59,12 @@ console.log('Found Sometging')
 }
 
 
-var TMP_PDF_FILE = "tmpPDF.pdf"
-
-
 function PreShellJob(param , success , failure)
 {
 
 
 
-awsDownload({ Bucket:param.Bucket , Key:param.Key } , function(){success();console.log('success')} , failure)
+awsDownload({ Bucket:param.Bucket , Key:param.Key } , success, failure)
 
 }
 
@@ -73,6 +72,8 @@ awsDownload({ Bucket:param.Bucket , Key:param.Key } , function(){success();conso
 function ShellJob(param , callback)
 {
 	console.log('1.' +'Shell Job')
+  console.log(param);
+  console.log(callback)
 
 
 //callback is neccesary to be called
@@ -81,7 +82,7 @@ function ShellJob(param , callback)
 function postSuccessUpload(_pdf , success , failure , Articles)
 {
 
-
+console.log('time to upload')
 
 awsuploadAll(_pdf , success , failure  , Articles , 'ShellImages/');
 
@@ -160,9 +161,10 @@ callback()
 
   	// awsUpload('log.ass' , 'testUpload/' , 'log.ass' , callback)
 
-
+if(_pdf)
  postSuccessUpload(_pdf, callback , failure , Articles );
-
+else
+  callback();
 // console.log(_pdf)
 
   }
@@ -222,10 +224,15 @@ PreShellJob(param , ShellScript ,failure );
 
 function StartJob()
 {
+  console.log('StartJob')
+
 setTimeout( JobToConvertPDF , 1000);
+
+
+
 }
 
-StartJob();
+StartJob()
 
 
 
