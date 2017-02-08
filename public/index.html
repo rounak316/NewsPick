@@ -52,6 +52,7 @@ height: 80%;
 
 #bottom
 {
+margin-bottom: -100px;
 
 width:100%;
 height: calc(20% );
@@ -178,6 +179,7 @@ overflow-y: hidden;
 
 
 </div>
+
     </body>
     <script type="text/javascript">
 
@@ -250,9 +252,14 @@ items = []
 $('svg').fadeOut()
 
 $.get('/readEpaper/' + Data[index]._id , function(a){
+console.log('_______')
+console.log(Data[index])
 
 
+var MainImageQuality = "THUMB"
 
+
+if(a.length > 0)
 for(var b of a)
 {
   
@@ -286,7 +293,14 @@ image.setAttribute('width' , '100%')
 image.setAttribute('height' , '100%')
 image.setAttribute('x' , '0')
 image.setAttribute('y' , '0')
-image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
+// image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
+
+
+image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + Data[index].Articles[MainImageQuality][0].Image)
+
+
+console.log(Data[index].Articles)
+
 
 
 _parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:transparent;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
@@ -346,7 +360,85 @@ $('svg').attr('height' ,   "80%" )
 
 
 }
+else
 
+{
+
+
+console.log('ELSE')
+
+{
+  
+
+var SVG = '<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="80%" viewBox="0 0 3521.000000 5313.000000" preserveAspectRatio="xMidYMid meet" style="display: block;"></svg>'
+
+var parser = new DOMParser();
+var _doc = parser.parseFromString(SVG ,  "text/xml");
+var _parent  =_doc.getElementsByTagName('svg')[0]
+
+
+var cntr= 0;
+var hyperlink = "javascript:initGallery("+ cntr +")"
+
+
+_parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
+
+items.push( {  w:0 , h:0 , src: 'POP.Location'} )
+
+
+
+
+var image = document.createElement('image')
+image.setAttribute('preserveAspectRatio' , 'xMinYMin slice')
+image.setAttribute('width' , '100%')
+image.setAttribute('height' , '100%')
+image.setAttribute('x' , '0')
+image.setAttribute('y' , '0')
+
+
+image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + Data[index].Articles[MainImageQuality][0].Image)
+
+
+
+
+
+_parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:transparent;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
+
+
+
+
+
+// _parent.innerHTML =image.outerHTML + "</image>"+ _parent.innerHTML
+
+
+$('svg').remove()
+
+
+
+
+$(_parent).find('path').attr('fill-opacity', '0.1');
+$(_parent).find('path').attr('fill', 'transparent');
+$(_parent).find('path').attr('class', 'article');
+
+
+
+// _parent.innerHTML = "<center>" + _parent.innerHTML + "</center>"
+
+
+document.getElementById('top').insertAdjacentElement( 'afterbegin' , _parent);
+
+$('svg').hide().fadeIn()
+
+$('svg').attr('width' , "100%" )   
+$('svg').attr('height' ,   "80%" )  
+// $('svg').find('path')attr("fill", "black");
+
+
+}
+
+
+
+}
 
 
 })
@@ -368,8 +460,15 @@ function getPDFByDate(date)
 
 $.get('/getConvertedPdf/' + date, function(success){
 
-bottomSlider(success)
+
+
+console.log('Data')
+console.log(success)
+
+bottomSlider(success )
+
 Data = success
+
 parseInfo()
 
 })
@@ -381,10 +480,15 @@ function bottomSlider(data)
 {
 
   var cntr = 0
+
+
+
 for(var _d of data)
 {
 
-for(var __d of _d.Articles.THUMB.splice(0,1))
+// for(var __d of _d.Articles.THUMB.splice(0,1))
+var __d = _d.Articles.THUMB[0]
+
 {
   console.log(__d.Image)
 
@@ -414,7 +518,7 @@ return ( "0000" + datae.getFullYear() ).slice(-4) + ( "0000" + (datae.getMonth()
 
 getPDFByDate(getCurrentFolder())
 
-window.scrollTo(0,1);
+
 // bottomSlider('baba')
 </script>
 

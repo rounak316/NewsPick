@@ -120,4 +120,4 @@ exports.StartJob = StartJob
 
 
 
-// InitJobArticleCutter()
+InitJobArticleCutter()
