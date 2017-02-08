@@ -275,7 +275,7 @@ if(Article._id == article_id)
 
 var page_no = Article.page_no;
 
-var save_sub_article = { pdf_id: new ObjectId(pdf_id), article_id: new ObjectId( article_id) , page_no:(  1 || page_no) , Location: Location , splitter_data:splitter_data , quality: quality , Folder:Folder }; 
+var save_sub_article = { pdf_id: new ObjectId(pdf_id), article_id: new ObjectId( article_id) , page_no:(  1 || page_no) , Location: Location , splitter_data:splitter_data , quality: quality , Folder:Folder , status: 0}; 
 
 
 
