@@ -204,14 +204,14 @@ closeOnScroll: false,
     maxSpreadZoom: 10 ,
     index:index || 0 // start at first slide
 };
-
+// alert(index)
 
 var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
 
 
 gallery.listen('gettingData', function(index, item) {
 
-    console.log(index)
+
 
         if (item.w < 1 || item.h < 1) { // unknown size
         var img = new Image(); 
@@ -221,8 +221,8 @@ gallery.listen('gettingData', function(index, item) {
            gallery.invalidateCurrItems(); // reinit Items
            gallery.updateSize(true); // reinit Items
 
-           console.log(item.w)
-           console.log(item.h)
+           // console.log(item.w)
+           // console.log(item.h)
 
 
 
@@ -246,6 +246,7 @@ gallery.init();
 function parseInfo( index)
 {
 
+
     index = index || 0
 items = []
   
@@ -266,8 +267,10 @@ for(var b of a)
 var SubArticlesImages = b.SubArticlesImages;
 
 
-var POP = SubArticlesImages.pop()
+console.log('POP'  , SubArticlesImages.length)
 
+var POP = SubArticlesImages.pop()
+console.log('pop' , POP)
 var SVG = POP.SVG;
 
 var parser = new DOMParser();
@@ -293,17 +296,17 @@ image.setAttribute('width' , '100%')
 image.setAttribute('height' , '100%')
 image.setAttribute('x' , '0')
 image.setAttribute('y' , '0')
-// image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
+image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + b.Location)
 
 
-image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + Data[index].Articles[MainImageQuality][0].Image)
-
-
-console.log(Data[index].Articles)
+// image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://prakhargyan.s3.ap-south-1.amazonaws.com/" + Data[index].Articles[MainImageQuality][0].Image)
 
 
 
-_parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:transparent;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
+
+
+
+_parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:black;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
 
 
 
@@ -315,6 +318,8 @@ _parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transpar
 $('svg').remove()
 for(var c of SubArticlesImages)
 {
+
+  console.log('pop' , c)
     cntr++;
 
   var SVG = c.SVG;
@@ -328,8 +333,9 @@ var parent  =doc.getElementsByTagName('svg')[0]
 
 items.push( {  w:0 , h:0 , src: c.Location} )
 
-var hyperlink = "javascript:initGallery("+ cntr +")"
+var hyperlink = "javascript:initGallery("+ (cntr  ) +")"
 
+console.log(  'loda' , (cntr) )
 
 
 _parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>'
@@ -339,7 +345,7 @@ _parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>
 
 }
 
-
+cntr = 0
 
 $(_parent).find('path').attr('fill-opacity', '0.1');
 $(_parent).find('path').attr('fill', 'transparent');
@@ -383,7 +389,7 @@ var hyperlink = "javascript:initGallery("+ cntr +")"
 
 _parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
 
-items.push( {  w:0 , h:0 , src: 'POP.Location'} )
+// items.push( {  w:0 , h:0 , src: 'POP.Location'} )
 
 
 
@@ -461,15 +467,11 @@ function getPDFByDate(date)
 $.get('/getConvertedPdf/' + date, function(success){
 
 
-
-console.log('Data')
-console.log(success)
-
 bottomSlider(success )
 
 Data = success
 
-parseInfo()
+parseInfo(0)
 
 })
 
@@ -490,7 +492,7 @@ for(var _d of data)
 var __d = _d.Articles.THUMB[0]
 
 {
-  console.log(__d.Image)
+  // console.log(__d.Image)
 
   var img = document.createElement('img');
   img.setAttribute('class' , 'unit')
@@ -502,6 +504,9 @@ $('.containment').append( img )
 
 }
 cntr = cntr + 1;
+
+
+
 }
 
 
