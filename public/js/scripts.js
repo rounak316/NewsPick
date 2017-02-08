@@ -132,6 +132,9 @@ CurrentDate = DatePicker.value;
 
 getPDFS(  getDate() );
 
+$('#edit_gallery')[0].setAttribute('href' , '/edit_gallery.html#' + CurrentDate);
+
+
 
 }
 

@@ -7,12 +7,12 @@
     <meta name="description" content="Touch-friendly JavaScript image gallery for mobile and desktop, without dependencies. Responsive layout. Swipe and zoom gestures.">
     <meta name="viewport" content="width = device-width, initial-scale = 1.0"> 
 
-    <meta name="author" content="Rajesh Agnihotri">
-    <link rel="canonical" href="http://prakhargyan.com">
+    <meta name="author" content="Dmitry Semenov">
+    <link rel="canonical" href="http://photoswipe.com">
 
-    <meta property="og:url" content="http://prakhargyan.com">
-    <meta property="og:title" content="Prakhar Gyan|प्रखर ज्ञान">
-    <meta property="og:description" content="Latest news on your finger tips. Touch a news article to read, and stay updated!">
+    <meta property="og:url" content="http://photoswipe.com">
+    <meta property="og:title" content="PhotoSwipe: Responsive JavaScript Image Gallery">
+    <meta property="og:description" content="Touch-friendly JavaScript image gallery for mobile and desktop, without dependencies. Responsive layout. Swipe and zoom gestures.">
     <meta property="og:image" content="http://photoswipe.com/test/horizontal-swipe.jpg">
 
     <link href="https://plus.google.com/102586375605352607718" rel="publisher">
@@ -512,10 +512,28 @@ cntr = cntr + 1;
 
 }
 
+function IsNumeric(val) {
+    return Number(parseFloat(val))==val;
+}
+
+
 function getCurrentFolder()
 {
-var datae = new Date()
-return ( "0000" + datae.getFullYear() ).slice(-4) + ( "0000" + (datae.getMonth() + 1) ).slice(-2)  + ( "0000" + datae.getDate() ).slice(-2) ;
+// var datae = new Date()
+// return ( "0000" + datae.getFullYear() ).slice(-4) + ( "0000" + (datae.getMonth() + 1) ).slice(-2)  + ( "0000" + datae.getDate() ).slice(-2) ;
+
+var date = window.location.hash.split('#')[1];
+if ( IsNumeric(window.location.hash.split('#')[1]) ) 
+{
+
+return date
+
+}
+else
+{
+window.location = "/upload.html"
+}
+
 
 }
 
