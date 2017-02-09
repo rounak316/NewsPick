@@ -4,15 +4,15 @@
 <meta name="mobile-web-app-capable" content="yes">
     <title>PrakharGyan ePaper</title>
 
-    <meta name="description" content="Latest news on your finger tips. Touch a news article to read, and stay updated!">
+    <meta name="description" content="Touch-friendly JavaScript image gallery for mobile and desktop, without dependencies. Responsive layout. Swipe and zoom gestures.">
     <meta name="viewport" content="width = device-width, initial-scale = 1.0"> 
 
-    <meta name="author" content="Rajesh Agnihotri">
-    <link rel="canonical" href="http://prakhargyan.com">
+    <meta name="author" content="Dmitry Semenov">
+    <link rel="canonical" href="http://photoswipe.com">
 
-    <meta property="og:url" content="http://prakhargyan.com">
-    <meta property="og:title" content="Prakhar Gyan | प्रखर ज्ञान">
-    <meta property="og:description" content="Latest news on your finger tips. Touch an article to read, and stay updated.">
+    <meta property="og:url" content="http://photoswipe.com">
+    <meta property="og:title" content="PhotoSwipe: Responsive JavaScript Image Gallery">
+    <meta property="og:description" content="Touch-friendly JavaScript image gallery for mobile and desktop, without dependencies. Responsive layout. Swipe and zoom gestures.">
     <meta property="og:image" content="http://photoswipe.com/test/horizontal-swipe.jpg">
 
     <link href="https://plus.google.com/102586375605352607718" rel="publisher">
@@ -36,9 +36,7 @@
 <style type="text/css">
     
 html, body { background: #000000 ; margin:0; padding:0; overflow:hidden; }
-svg { position:fixed; top:0; bottom:0; left:0; right:0 ;
-margin-top:40px; 
-}
+svg { position:fixed; top:0; bottom:0; left:0; right:0 }
 
 
 
@@ -48,16 +46,16 @@ margin-top:40px;
 {
 
 width:100%;
-height: calc(80%);
+height: 80%;
 
 }
 
 #bottom
 {
-
+margin-bottom: -100px;
 
 width:100%;
-height: calc(20% - 40px);
+height: calc(20% );
 
 }
 
@@ -89,107 +87,12 @@ overflow-y: hidden;
   /*box-shadow: 0 0 10px #222;*/
     }
 
-@import "compass/css3";
 
-@import "compass";
-
-/* VARIABLES */
-$header-bg: #3f51b5;
-$menu-width: 250px!default;
-
-/* BASE */
-html,
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1em;
-  line-height: 1.4;
-  height: 100%;
-  
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.container {
-  @include clearfix;
-  margin: 0 20px;
-}
-
-
-
-/* HEADER */
-.header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 38px;
-  margin-bottom: 5px;
-  line-height: 45px;
-  color: #fff;
-  
-  background-color: $header-bg;
-}
-
-.header__logo {
-  font-weight: 700;
-  padding: 0 25px;
-  float: left;
-}
-
-/* MENU */
-
-
-/* RESPONSIVE */
-
-
-
-  
-  .header {
-    position: static;
-  }
-  
-  .header__icon {
-    position: relative;
-    display: block;
-    float: left;
-    width: 50px;
-    height: 30px;
-    
- }
-
-
-header
-{
-
-background: #212121;
-
-}
 
 </style>
 
   <body>
 
-
-    
-    <header class="header">
-      
-      <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="#" class="header__logo">Logo</a>
-      
-     
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Blog</a>
-      
-    
-
-
-      
-    </header>
 
 
 
@@ -403,7 +306,7 @@ image.setAttributeNS( 'http://www.w3.org/1999/xlink' ,  'xlink:href' , "https://
 
 
 
-_parent.innerHTML = '<style type="text/css">image{} .article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:black;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
+_parent.innerHTML = '<style type="text/css">.article{ opacity: 0.5;fill:transparent; }  .article:hover {fill:black;  opacity: 1.0; stroke: white;stroke-width: 4px; } </style>'  + image.outerHTML + "</image>"+ _parent.innerHTML
 
 
 
@@ -458,7 +361,7 @@ document.getElementById('top').insertAdjacentElement( 'afterbegin' , _parent);
 $('svg').hide().fadeIn()
 
 $('svg').attr('width' , "100%" )   
-$('svg').attr('height' ,   "calc(80% )" )  
+$('svg').attr('height' ,   "80%" )  
 // $('svg').find('path')attr("fill", "black");
 
 
@@ -609,10 +512,28 @@ cntr = cntr + 1;
 
 }
 
+function IsNumeric(val) {
+    return Number(parseFloat(val))==val;
+}
+
+
 function getCurrentFolder()
 {
-var datae = new Date()
-return ( "0000" + datae.getFullYear() ).slice(-4) + ( "0000" + (datae.getMonth() + 1) ).slice(-2)  + ( "0000" + datae.getDate() ).slice(-2) ;
+// var datae = new Date()
+// return ( "0000" + datae.getFullYear() ).slice(-4) + ( "0000" + (datae.getMonth() + 1) ).slice(-2)  + ( "0000" + datae.getDate() ).slice(-2) ;
+
+var date = window.location.hash.split('#')[1];
+if ( IsNumeric(window.location.hash.split('#')[1]) ) 
+{
+
+return date
+
+}
+else
+{
+window.location = "/upload.html"
+}
+
 
 }
 
