@@ -74,6 +74,7 @@ progessbar.style.width="0%"
     console.log('Successfully uploaded photo.' );
 
 data.Folder = folder;
+data.name = file.name
 console.log(data)
 sendFlagUploadPDF(data , function(){ removeElement( element ); getPDFS(  getDate() ) ;/*Success Callback*/}  , function(){});
   

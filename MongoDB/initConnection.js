@@ -81,7 +81,7 @@ var pdf = new PDF();
 if(Folder)
 {
 
-PDF.find({Folder:Folder , status:4} , '', function(err, pdf) {
+PDF.find({Folder:Folder , status:4} ).sort({ name : 1} ).exec( function(err, pdf) {
   if (err) 
    failure();
 else
