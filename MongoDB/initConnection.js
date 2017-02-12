@@ -218,7 +218,7 @@ succeess([ articles ] )
 }
 
 
-function findArticleForSplit(res , param , article) 
+function findArticleForSplit( param , article , succeess , failure ) 
 {
 
  console.log('iintt' + param + article)
@@ -264,8 +264,8 @@ splitter_data=splitter_data.slice( 0 , splitter_data.length-1)
 var Articles = article.Articles[quality];
 
 if(!Articles)
-res.send(Articles)
-
+success(Articles)
+else
 for(var Article of Articles)
 {
 
@@ -286,12 +286,12 @@ var save_sub_article = { pdf_id: new ObjectId(pdf_id), article_id: new ObjectId(
 
 SubArticle.update(  {pdf_id: new ObjectId(pdf_id)}  , save_sub_article , { upsert : true} , function (err) {
   if (err) {
-    console.log('error' , err);
-    res.send('{Error}')
+
+failure();
   } else {
-    console.log('Saved SubArticle');
+
     
-    res.send(save_sub_article)
+    succeess(save_sub_article)
   }
 });
 
@@ -305,12 +305,12 @@ return
 
 }
 
-res.send('{}' )
+failure();
 
 }
 catch(ex)
 {
-throw new Error();
+failure();
 
 }
 
@@ -318,7 +318,7 @@ throw new Error();
 }
 
 
-var splitArticles = function(res , param)
+var splitArticles = function(param , success , failure)
 {
 
 var pdf_id = param.pdf_id;
@@ -330,21 +330,13 @@ var pdf = new PDF();
 
 PDF.findOne(  {_id:pdf_id }, function(err, article) {
   if (err || !article)  
-   res.send('{}')
+   failure('{ }')
 else{
   // object of all the users
 
 
-try
-{
+findArticleForSplit( param , article , success , failure)
 
-findArticleForSplit(res , param , article)
-}
-catch(ex)
-{
-throw new Error();
-
-}
 
 
 }

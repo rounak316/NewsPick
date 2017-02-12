@@ -135,7 +135,7 @@ getPDFS(  getDate() );
 
 $('#edit_gallery')[0].setAttribute('href' , '/edit_gallery.html#' + CurrentDate);
 
-
+window.location.hash = CurrentDate
 
 }
 
@@ -163,10 +163,15 @@ if(data.status != status)
 
 
 var child =  $("#model" + data.status).clone();
-console.log(child)
+
+
+
+
 
 child[0].removeAttribute('class');
 child[0].setAttribute('class' , 'addedData');
+
+
 var URL_REDIRECT = '/edit.html?article_id=' + data._id;
 
 child.find('#edit')[0].setAttribute('href', URL_REDIRECT)
@@ -238,6 +243,9 @@ console.log('appending' + status)
 
 var child =  $("#model" + status).clone();
 console.log(child)
+child.find('.card-title')[0].innerHTML = pdf.name.replace(/[^a-zA-Z0-9 .]/g, " ").split('.')[0];
+child.find('.card-text')[0].innerHTML  =""
+
 
 child[0].removeAttribute('class');
 child[0].setAttribute('class' , 'addedData');

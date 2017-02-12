@@ -87,7 +87,31 @@ overflow-y: hidden;
   /*box-shadow: 0 0 10px #222;*/
     }
 
+    .unit-child {
+ 
+    height: calc(100% - 10px);
+  /*width: 200px;*/
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  /*margin: 15px;*/
+  display: inline-block;
+  /*box-shadow: 0 0 10px #222;*/
+    }
 
+
+.buttom-editor-image
+{
+
+height: 10px;
+
+}
+
+button{
+margin: : 3px;
+
+}
 
 </style>
 
@@ -280,9 +304,9 @@ var _parent  =_doc.getElementsByTagName('svg')[0]
 
 var cntr= 0;
 var hyperlink = "javascript:initGallery("+ cntr +")"
+hyperlink = ""
 
-
-_parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
+// _parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
 
 items.push( {  w:0 , h:0 , src: POP.Location} )
 
@@ -334,12 +358,13 @@ var parent  =doc.getElementsByTagName('svg')[0]
 items.push( {  w:0 , h:0 , src: c.Location} )
 
 var hyperlink = "javascript:initGallery("+ (cntr  ) +")"
+hyperlink = ""
 
 console.log(  'loda' , (cntr) )
 
 
-_parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>'
-
+// _parent.innerHTML +=  '<a href="' + hyperlink +'">' +  parent.innerHTML  + '</a>'
+_parent.innerHTML += parent.innerHTML
 
 
 
@@ -385,9 +410,9 @@ var _parent  =_doc.getElementsByTagName('svg')[0]
 
 var cntr= 0;
 var hyperlink = "javascript:initGallery("+ cntr +")"
+hyperlink = ""
 
-
-_parent.innerHTML =  '<a href="' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
+// _parent.innerHTML =  '<a ' + hyperlink +'">' +  _parent.innerHTML  + '</a>'
 
 // items.push( {  w:0 , h:0 , src: 'POP.Location'} )
 
@@ -499,7 +524,18 @@ var __d = _d.Articles.THUMB[0]
   img.src ="https://prakhargyan.s3.ap-south-1.amazonaws.com/" + __d.Image
 img.setAttribute('onclick' , "parseInfo(" +cntr +  ")" )
 
-$('.containment').append( img )
+var div= document.createElement('div');
+div.appendChild(img)
+  div.setAttribute('class' , 'unit-child')
+
+
+var button = document.createElement('button');
+button.setAttribute('onclick' , 'window.location.href="/edit.html?article_id=' + _d._id +"#" + window.location.hash+ '"' )
+button.setAttribute('class' , 'buttom-editor-image')
+button.innerHTML = "Edit"
+div.append(button)
+
+$('.containment').append( div )
 
 
 }

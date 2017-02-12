@@ -37,7 +37,7 @@
     
 html, body { background: #000000 ; margin:0; padding:0; overflow:hidden; }
 svg { position:fixed; top:0; bottom:0; left:0; right:0 ;
-margin-top:40px; 
+margin-top:0px; 
 }
 
 
@@ -57,7 +57,7 @@ height: calc(80%);
 
 
 width:100%;
-height: calc(20% - 40px);
+height: calc(20% - 4px);
 
 }
 
@@ -123,12 +123,13 @@ a {
 
 /* HEADER */
 .header {
+  display: none;
   position: fixed;
   left: 0;
   right: 0;
   height: 38px;
   margin-bottom: 5px;
-  line-height: 45px;
+  /*line-height: 45px;*/
   color: #fff;
   
   background-color: $header-bg;

@@ -169,7 +169,7 @@ ArticleConverter( 'sh ./test.sh '  + splitter_data  , function() {console.log('y
 
 try
 {
-MongoDB.splitArticles(res,req.body)
+MongoDB.splitArticles(req.body , function(data){ res.send({ status : true })  }  , function() {   throw new Error(); })
 }
 catch( err)
 {

@@ -169,6 +169,13 @@ $.ajax({
   data: data , 
   success: function(data){
 console.log(data)
+window.location = '/edit_gallery.hrml#' + window.location.href
+
+window.history.back();
+  },
+
+  error: function(){
+alert('Something Went Wrong! Try again.')
 
   }
 });
