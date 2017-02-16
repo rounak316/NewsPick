@@ -217,8 +217,8 @@ var KeyState = true;
 
           var index= CroppedArticles.length;
 
-if(index>0)
-$('#previewCroppedArticle')[0].src=  _localStorage.getItem(  CroppedArticles[index-1] );
+// if(index>0)
+// $('#previewCroppedArticle')[0].src=  _localStorage.getItem(  CroppedArticles[index-1] );
 
 
           KeyState = false;

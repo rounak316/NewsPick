@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId; 
-mongoose.connect('mongodb://54.202.250.147/test', {
+mongoose.connect('mongodb://prakhargyan:prakhargyan321@54.202.250.147/test', {
   server: {
     socketOptions: {
       socketTimeoutMS: 0,
